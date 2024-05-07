@@ -33,8 +33,6 @@ def FAQ():
     return render_template('FAQ.html')
 
 
-
-
 if __name__ == '__main__':
     app.run()
 

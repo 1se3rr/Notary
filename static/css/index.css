@@ -1,22 +1,51 @@
 .name-and-logo, .about, .notarial-actions, .price-actions{
-    width: 1200px;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, auto);
     grid-template-rows: auto;
-    gap: 30px;
     background-color: #11557C;
 }
-.notary-name{
-    height: 262px;
-    width: 416px;
-    background-color: #7E162E;
-}
-.notary-logo{
-    height: 262px;
-    width: 751px;
-    background-color: #7E162E;
+
+
+.name-and-logo{
+     grid-template-columns: 70% 30%;
 }
 
+.about{
+
+}
+
+.notary-name {
+    display: flex; /* Используем flexbox для центрирования содержимого */
+    justify-content: center; /* Центрирование текста по горизонтали */
+    align-items: center; /* Центрирование текста по вертикали */
+    height: 100%; /* Задаем высоту, если требуется, чтобы убедиться, что flexbox работает корректно */
+    width: calc(100% - 30px); /* Уже установленная ширина с учетом отступов */
+    background-color: #7E162E; /* Сохраняем фоновый цвет */
+}
+.notary-name h1{
+    font-size: calc(1vw + 1vh + 1vmin); /* Адаптивный размер шрифта */
+    padding: 15px; /* Отступы со всех сторон */
+    margin: 0; /* Убираем внешние отступы */
+    width: 100%; /* Ширина относительно родительского блока */
+    box-sizing: border-box; /* Включает padding и border в общую ширину и высоту элемента */
+}
+
+.notary-logo {
+    width: 100%; /* Элемент занимает всю доступную ширину */
+    background-image: url('/static/img/logo.jpg'); /* Путь к изображению */
+    background-position: center center; /* Центрирование изображения */
+    background-repeat: no-repeat; /* Нет повторения */
+    background-size: cover; /* Изображение покрывает всю область, сохраняя пропорции */
+    padding-top: 100%; /* Высота элемента равна его ширине, делая его квадратным */
+    position: relative; /* Для корректной работы padding-top */
+    overflow: hidden; /* Скрывает любую часть изображения, выходящую за границы */
+}
+
+
+
+
+
+/*
 .description, .llicense-number{
     height: 116px;
     width: 751px;
