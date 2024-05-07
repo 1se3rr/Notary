@@ -1,4 +1,4 @@
-.logo, .about, .notarial_actions, .prise_action{
+.name-and-logo, .about, .notarial-actions, .price-actions{
     width: 1200px;
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -6,31 +6,31 @@
     gap: 30px;
     background-color: #11557C;
 }
-.logo-name{
+.notary-name{
     height: 262px;
     width: 416px;
     background-color: #7E162E;
 }
-.logo-img{
+.notary-logo{
     height: 262px;
     width: 751px;
     background-color: #7E162E;
 }
 
-.notary-district,.license{
+.description, .llicense-number{
     height: 116px;
     width: 751px;
     background-color: #7E162E;
 }
 
-.schedule{
+.working-hours{
     height: 262px;
     width: 416px;
     background-color: #7E162E;
     grid-row: span 2;
 }
 
-.notarial_actions .title{
+.notarial-actions .section-title{
     height: 71px;
     width: 1200px;
     grid-column: span 2;
@@ -43,40 +43,40 @@
     background-color: #7E162E;
 }
 
-.actions{
+.actions-list{
     height: 439px;
     width: 798px;
     background-color: #7E162E;
     grid-row: span 3;
 }
 
-.button{
+.view-article-button{
     height: 58px;
     width: 373px;
     background-color: #7E162E;
 }
 
-.notarial_actions .text{
+.notarial_actions .text-related-to-notary{
     height: 200px;
     width: 373px;
     background-color: #7E162E;
 }
 
-.prise_action .title{
+.price-actions .section-title{
     width: 1200px;
     height: 71px;
     background-color: #7E162E;
     grid-column: span 2;
 }
 
-.prise{
+.tariffs{
     width: 814px;
     height: 394px;
     background-color: #7E162E;
     grid-row: span 3;
 }
 
-.prise_action .text{
+.text-related-to-tariffs{
     width: 356px;
     height: 182px;
     background-color: #7E162E;
@@ -84,7 +84,7 @@
 
 
 
-.FAQ , .gos{
+.faq-link , .gos-link{
     width: 356px;
     height: 77px;
     background-color: #7E162E;
