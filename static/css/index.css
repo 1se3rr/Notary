@@ -1,5 +1,5 @@
 .name-and-logo, .about, .notarial-actions, .price-actions{
-    width: 1200px;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-template-rows: auto;
