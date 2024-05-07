@@ -1,0 +1,92 @@
+.logo, .about, .notarial_actions, .prise_action{
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto;
+    gap: 30px;
+    background-color: #11557C;
+}
+.logo-name{
+    height: 262px;
+    width: 416px;
+    background-color: #7E162E;
+}
+.logo-img{
+    height: 262px;
+    width: 751px;
+    background-color: #7E162E;
+}
+
+.notary-district,.license{
+    height: 116px;
+    width: 751px;
+    background-color: #7E162E;
+}
+
+.schedule{
+    height: 262px;
+    width: 416px;
+    background-color: #7E162E;
+    grid-row: span 2;
+}
+
+.notarial_actions .title{
+    height: 71px;
+    width: 1200px;
+    grid-column: span 2;
+    background-color: #7E162E;
+}
+
+.article{
+    height: 114px;
+    width: 373px;
+    background-color: #7E162E;
+}
+
+.actions{
+    height: 439px;
+    width: 798px;
+    background-color: #7E162E;
+    grid-row: span 3;
+}
+
+.button{
+    height: 58px;
+    width: 373px;
+    background-color: #7E162E;
+}
+
+.notarial_actions .text{
+    height: 200px;
+    width: 373px;
+    background-color: #7E162E;
+}
+
+.prise_action .title{
+    width: 1200px;
+    height: 71px;
+    background-color: #7E162E;
+    grid-column: span 2;
+}
+
+.prise{
+    width: 814px;
+    height: 394px;
+    background-color: #7E162E;
+    grid-row: span 3;
+}
+
+.prise_action .text{
+    width: 356px;
+    height: 182px;
+    background-color: #7E162E;
+}
+
+
+
+.FAQ , .gos{
+    width: 356px;
+    height: 77px;
+    background-color: #7E162E;
+}
+
