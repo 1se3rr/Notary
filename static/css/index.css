@@ -2,7 +2,8 @@
     width: 100%;
     display: grid;
     grid-template-rows: auto;
-    background-color: #11557C;
+
+
 }
 
 
@@ -10,25 +11,25 @@
      grid-template-columns: 70% 30%;
 }
 
-.about{
 
-}
 
 .notary-name {
-    display: flex; /* Используем flexbox для центрирования содержимого */
-    justify-content: center; /* Центрирование текста по горизонтали */
-    align-items: center; /* Центрирование текста по вертикали */
-    height: 100%; /* Задаем высоту, если требуется, чтобы убедиться, что flexbox работает корректно */
-    width: calc(100% - 30px); /* Уже установленная ширина с учетом отступов */
-    background-color: #7E162E; /* Сохраняем фоновый цвет */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Примерная высота, которую можно задать или изменить */
+    width: calc(100% - 30px); /* Ширина с учетом отступов */
+    padding: 0 15px; /* Отступы по бокам */
+    background-color: #7E162E; /* Цвет фона */
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 48px;
+    color: #fff; /* Белый текст для контраста с фоном */
+    text-align: center; /* Выравнивание текста по центру */
 }
-.notary-name h1{
-    font-size: calc(1vw + 1vh + 1vmin); /* Адаптивный размер шрифта */
-    padding: 15px; /* Отступы со всех сторон */
-    margin: 0; /* Убираем внешние отступы */
-    width: 100%; /* Ширина относительно родительского блока */
-    box-sizing: border-box; /* Включает padding и border в общую ширину и высоту элемента */
-}
+
+
+
 
 .notary-logo {
     width: 100%; /* Элемент занимает всю доступную ширину */
@@ -39,58 +40,167 @@
     padding-top: 100%; /* Высота элемента равна его ширине, делая его квадратным */
     position: relative; /* Для корректной работы padding-top */
     overflow: hidden; /* Скрывает любую часть изображения, выходящую за границы */
+    border-radius: 10px;
+}
+
+.about{
+     grid-template-columns: 70% 30%;
+}
+
+.description, .llicense-number{
+    height: 116px;
+    width: calc(100% - 30px); /* Ширина с учетом отступов */
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 24px; /* Размер шрифта */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+    background-color: #F2F2F2; /* Цвет фона */
+    text-align: justify; /* Выравнивание текста по левому краю */
+    color: #333; /* Цвет текста */
+    box-sizing: border-box; /* Учитывает отступы в общий размер */
 }
 
 
 
-
-
-/*
-.description, .llicense-number{
-    height: 116px;
-    width: 751px;
-    background-color: #7E162E;
+.description{
+    margin-bottom: 30px;
 }
 
 .working-hours{
+    position: relative;
     height: 262px;
-    width: 416px;
-    background-color: #7E162E;
+    width: 100%;
     grid-row: span 2;
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    text-align: justify; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 18px; /* Размер шрифта */
+    box-sizing: border-box; /* Учитывает отступы в общий размер */
 }
 
-.notarial-actions .section-title{
-    height: 71px;
-    width: 1200px;
-    grid-column: span 2;
-    background-color: #7E162E;
+.working-hours::before,
+.working-hours:after {
+    content: ""; /* Необходимо для отображения псевдоэлементов */
+    position: absolute; /* Абсолютное позиционирование относительно .article */
+    border-style: solid; /* Стиль границы */
+    border-color:  #7E162E;; /* Цвет границы */
 }
 
-.article{
-    height: 114px;
-    width: 373px;
-    background-color: #7E162E;
+.working-hours:before {
+    top: 0; left: 0; /* Позиционирование в левом верхнем углу */
+    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
+    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
+    border-width: 5px 0 0 5px; /* Толщина линии только сверху и слева */
 }
+
+.working-hours:after {
+    bottom: 0; right: 0; /* Позиционирование в правом нижнем углу */
+    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
+    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
+    border-width: 0 5px 5px 0; /* Толщина линии только снизу и справа */
+}
+
+
+.notarial-actions{
+    grid-template-columns: 30% 70%;
+
+}
+
+.notarial-actions .section-title {
+    height: 71px; /* Высота блока */
+    width: 100%; /* Полная ширина блока */
+    grid-column: span 2; /* Занимает две колонки в сетке */
+    background-color: #7E162E; /* Фон блока */
+    margin-bottom: 30px; /* Отступ снизу */
+    border-radius: 10px;
+
+    /* Flexbox для центрирования текста по вертикали и горизонтали */
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
+
+    /* Размер шрифта */
+    font-size: 48px;
+    color: #fff; /* Белый текст для контраста с фоном */
+    box-sizing: border-box; /* Учитывает отступы в общей высоте */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+
+.article {
+    position: relative; /* Нужно для позиционирования псевдоэлементов */
+    height: 114px; /* Фиксированная высота */
+    width: calc(100% - 30px); /* Ширина с учетом отступов */
+     /* Фоновый цвет */
+    margin-bottom: 30px; /* Отступ снизу */
+
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    text-align: justify; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 18px; /* Размер шрифта */
+    box-sizing: border-box; /* Учитывает отступы в общий размер */
+}
+
+.article::before,
+.article::after {
+    content: ""; /* Необходимо для отображения псевдоэлементов */
+    position: absolute; /* Абсолютное позиционирование относительно .article */
+    border-style: solid; /* Стиль границы */
+    border-color:  #7E162E;; /* Цвет границы */
+}
+
+.article::before {
+    top: 0; left: 0; /* Позиционирование в левом верхнем углу */
+    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
+    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
+    border-width: 5px 0 0 5px; /* Толщина линии только сверху и слева */
+}
+
+.article::after {
+    bottom: 0; right: 0; /* Позиционирование в правом нижнем углу */
+    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
+    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
+    border-width: 0 5px 5px 0; /* Толщина линии только снизу и справа */
+}
+
 
 .actions-list{
     height: 439px;
-    width: 798px;
-    background-color: #7E162E;
+    width: 100%;
     grid-row: span 3;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+    background-color: #F2F2F2; /* Цвет фона */
+
 }
 
 .view-article-button{
     height: 58px;
-    width: 373px;
+    width: calc(100% - 30px);
     background-color: #7E162E;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
 }
 
-.notarial_actions .text-related-to-notary{
+.text-related-to-notary{
     height: 200px;
-    width: 373px;
-    background-color: #7E162E;
-}
+    width: calc(100% - 30px);
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 18px; /* Размер шрифта */
+    box-sizing: border-box; /* Учитывает отступы в общий размер */
+    text-align: justify;
 
+}
+/*
 .price-actions .section-title{
     width: 1200px;
     height: 71px;

@@ -1,5 +1,10 @@
 {% extends 'base.html'%}
 
+{% block head%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/index.js')}}">
+{% endblock %}
+
 {% block title %}
 Главная
 {% endblock %}
@@ -7,28 +12,28 @@
 {% block content %}
 
 <section class="name-and-logo">
-    <div class=" notary-name"><h1>Нотариус Бармина Татьяна Юрьевна</h1></div>
+    <div class=" notary-name">Нотариус Бармина Татьяна Юрьевна</div>
     <div class="notary-logo"></div>
 </section>
 
 
 
 <section class="about">
-    <div class="description"></div>
+    <div class="description"> Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна</div>
     <div class="working-hours"></div>
-    <div class="llicense-number"></div>
+    <div class="llicense-number">Лицензия №98 выдана 23 декабря 2014 годаУправлением Министерства Юстиции Российской Федеоации по Ямало-Ненецкому автономному округу</div>
 </section>
 
 <section class="notarial-actions">
-    <div class="section-title"></div>
-    <div class="article"></div>
+    <div class="section-title">Нотариальные действия </div>
+    <div class="article">Нотариус совершает все виды нотариальных действий в соответствии со ст. 35 «Основ законодательства Российской Федерации о нотариате».</div>
     <div class="actions-list"></div>
     <div class="view-article-button"></div>
-    <div class="text-related-to-notary"></div>
+    <div class="text-related-to-notary">Нотариат в РФ призван обеспечивать в соответствии с Конституцией РФ, конституциями (уставами) субъектов РФ, настоящими Основами защиту прав и законных интересов граждан и юридических лиц путем совершения нотариусами предусмотренных законодательными актами нотариальных действий от имени  РФ.</div>
 </section>
 
 <section class="price-actions">
-    <div class="section-title"></div>
+    <div class="section-title"> </div>
     <div class="tariffs"></div>
     <div class="text-related-to-tariffs"></div>
     <div class="faq-link"></div>
