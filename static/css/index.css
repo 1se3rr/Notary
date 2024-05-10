@@ -2,52 +2,60 @@
     width: 100%;
     display: grid;
     grid-template-rows: auto;
-
-
 }
 
 
-.name-and-logo{
-     grid-template-columns: 70% 30%;
+.name-and-logo {
+    grid-template-columns: 70% 30%; /* Отвод 70% пространства для названия и 30% для логотипа */
+    ; /* Центрирование содержимого по вертикали */
 }
-
-
 
 .notary-name {
+    grid-column: 1 / 2; /* Занимает первую колонку в гриде */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Примерная высота, которую можно задать или изменить */
-    width: calc(100% - 30px); /* Ширина с учетом отступов */
-    padding: 0 15px; /* Отступы по бокам */
-    background-color: #7E162E; /* Цвет фона */
+    height: 100%; /* Высота контейнера */
+    width: calc(100% - 30px);
+    padding: 0 15px;
+    background-color: #7E162E;
     box-sizing: border-box;
     border-radius: 10px;
     font-size: 48px;
-    color: #fff; /* Белый текст для контраста с фоном */
-    text-align: center; /* Выравнивание текста по центру */
+    color: #fff;
+    text-align: center;
+    margin: 0; /* Убираем стандартные отступы для <h1> */
 }
-
 
 
 
 .notary-logo {
-    width: 100%; /* Элемент занимает всю доступную ширину */
-    background-image: url('/static/img/logo.jpg'); /* Путь к изображению */
-    background-position: center center; /* Центрирование изображения */
-    background-repeat: no-repeat; /* Нет повторения */
-    background-size: cover; /* Изображение покрывает всю область, сохраняя пропорции */
-    padding-top: 100%; /* Высота элемента равна его ширине, делая его квадратным */
-    position: relative; /* Для корректной работы padding-top */
-    overflow: hidden; /* Скрывает любую часть изображения, выходящую за границы */
+    grid-column: 2 / 2; /* Занимает вторую колонку в гриде */
+    width: 100%;
+    padding-top: 100%; /* Высота элемента равна его ширине */
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    box-sizing: border-box;
     border-radius: 10px;
+    background: url('/static/img/logo.jpg') center center no-repeat; /* Сокращенный синтаксис для фона */
+    background-size: cover;
 }
+
+.notary-logo img {
+    width: 100%; /* Ширина изображения равна ширине контейнера */
+    height: auto; /* Высота автоматически подстраивается под ширину */
+    border-radius: 10px; /* Скругление углов изображения, если это необходимо */
+}
+
+
 
 .about{
      grid-template-columns: 70% 30%;
 }
 
-.description, .llicense-number{
+.description, .license-number{
+    position: relative;
     height: 116px;
     width: calc(100% - 30px); /* Ширина с учетом отступов */
     padding: 15px; /* Отступы со всех сторон по 15 пикселей */
@@ -61,9 +69,22 @@
     text-align: justify; /* Выравнивание текста по левому краю */
     color: #333; /* Цвет текста */
     box-sizing: border-box; /* Учитывает отступы в общий размер */
+    margin: 0;
 }
 
-
+.overlay-button {
+    position: absolute; /* Абсолютное позиционирование внутри родительского элемента */
+    right: -15px; /* Смещение вправо на 15px за пределы контейнера */
+    bottom: -22.5px; /* Смещение вниз на половину высоты кнопки (45px / 2 = 22.5px) */
+    width: 113px;
+    height: 45px;
+    border: none; /* Удаление стандартной рамки */
+   background-color: #7E162E;
+    color: white; /* Цвет текста */
+    cursor: pointer; /* Курсор в виде указателя для улучшения UX */
+    border-radius: 5px; /* Скругление углов кнопки */
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+}
 
 .description{
     margin-bottom: 30px;
@@ -105,13 +126,14 @@
 }
 
 
+
 .notarial-actions{
     grid-template-columns: 30% 70%;
 
 }
 
 .notarial-actions .section-title {
-    height: 71px; /* Высота блока */
+    height: auto; /* Высота блока */
     width: 100%; /* Полная ширина блока */
     grid-column: span 2; /* Занимает две колонки в сетке */
     background-color: #7E162E; /* Фон блока */
@@ -124,7 +146,7 @@
     align-items: center; /* Вертикальное центрирование */
 
     /* Размер шрифта */
-    font-size: 48px;
+    font-size: 24px;
     color: #fff; /* Белый текст для контраста с фоном */
     box-sizing: border-box; /* Учитывает отступы в общей высоте */
     text-align: center; /* Выравнивание текста по центру */
@@ -167,14 +189,22 @@
     border-width: 0 5px 5px 0; /* Толщина линии только снизу и справа */
 }
 
-
-.actions-list{
+.actions-section {
+    position: relative; /* Устанавливает этот элемент как контекст позиционирования */
     height: 439px;
     width: 100%;
     grid-row: span 3;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
     background-color: #F2F2F2; /* Цвет фона */
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.actions-list{
+
 
 }
 
@@ -205,7 +235,7 @@
 }
 
 .price-actions .section-title{
-    height: 71px; /* Высота блока */
+    height: auto; /* Высота блока */
     width: 100%; /* Полная ширина блока */
     grid-column: span 2; /* Занимает две колонки в сетке */
     background-color: #7E162E; /* Фон блока */
@@ -218,13 +248,14 @@
     align-items: center; /* Вертикальное центрирование */
 
     /* Размер шрифта */
-    font-size: 48px;
+    font-size: 24px;
     color: #fff; /* Белый текст для контраста с фоном */
     box-sizing: border-box; /* Учитывает отступы в общей высоте */
     text-align: center; /* Выравнивание текста по центру */
 }
 
 .tariffs{
+    position: relative;
     width: calc(100% - 30px);
     height: 394px;
     background-color: #F2F2F2;
@@ -239,7 +270,7 @@
     width: 100%;
     height: 182px;
     margin-bottom: 30px;
-
+    margin-left: 0;
     padding: 15px; /* Отступы со всех сторон по 15 пикселей */
     display: flex; /* Использование flexbox для центрирования содержимого */
     align-items: center; /* Центрирование по вертикали */
@@ -273,10 +304,17 @@
 
 
 .faq-link , .gos-link{
+    margin: 0;
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 18px; /* Размер шрифта */
     width: 100%;
     height: 77px;
     background-color: #F2F2F2;
     border-radius: 10px;
+    box-sizing: border-box;
     box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
 }
 

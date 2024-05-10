@@ -2,40 +2,106 @@
 
 {% block head%}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='js/index.js')}}">
+    <link rel="" href="{{ url_for('static', filename='js/index.js')}}">
 {% endblock %}
 
 {% block title %}
 Главная
 {% endblock %}
 
+
 {% block content %}
 
+
 <section class="name-and-logo">
-    <div class=" notary-name">Нотариус Бармина Татьяна Юрьевна</div>
-    <div class="notary-logo"></div>
+        <h1 class="notary-name">Нотариус Бармина Татьяна Юрьевна</h1>
+        <figure class="notary-logo">
+            <img src="path/to/logo.jpg" alt="Логотип нотариуса Бармина Татьяна Юрьевна">
+        </figure>
 </section>
+
+
 
 <section class="about">
-    <div class="description"> Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна</div>
-    <div class="working-hours"></div>
-    <div class="llicense-number">Лицензия №98 выдана 23 декабря 2014 годаУправлением Министерства Юстиции Российской Федеоации по Ямало-Ненецкому автономному округу</div>
+    <p class="description">Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна
+    <button class="overlay-button">Подробнее</button>
+</p>
+
+
+    <time class="working-hours">
+        <!-- Добавьте сюда время работы или оставьте пустым для дальнейшего наполнения -->
+    </time>
+
+
+<p class="license-number">Лицензия №98 выдана 23 декабря 2014 года Управлением Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу
+    <button class="overlay-button">Подробнее</button>
+</p>
 </section>
+
 
 <section class="notarial-actions">
-    <div class="section-title">Нотариальные действия </div>
-    <div class="article">Нотариус совершает все виды нотариальных действий в соответствии со ст. 35 «Основ законодательства Российской Федерации о нотариате».</div>
-    <div class="actions-list"></div>
-    <div class="view-article-button"></div>
-    <div class="text-related-to-notary">Нотариат в РФ призван обеспечивать в соответствии с Конституцией РФ, конституциями (уставами) субъектов РФ, настоящими Основами защиту прав и законных интересов граждан и юридических лиц путем совершения нотариусами предусмотренных законодательными актами нотариальных действий от имени  РФ.</div>
+    <header class="section-title">
+        <h2 >Нотариальные действия</h2>
+    </header>
+
+    <article class="article">
+        <p >Нотариус совершает все виды нотариальных действий в соответствии со ст. 35 «Основ законодательства Российской Федерации о нотариате».</p>
+    </article>
+
+  <section class="actions-section">
+    <ul class="actions-list">
+        <!-- Заполни список видами действий -->
+    </ul>
+    <button class="overlay-button">Подробнее</button>
+    </section>
+
+    <button class="view-article-button">
+        <!-- Ссылка на полную статью -->
+    </button>
+
+    <aside class="text-related-to-notary">
+        <p>Нотариат в РФ призван обеспечивать в соответствии с Конституцией РФ, конституциями (уставами) субъектов РФ, настоящими Основами защиту прав и законных интересов граждан и юридических лиц путем совершения нотариусами предусмотренных законодательными актами нотариальных действий от имени РФ.</p>
+    </aside>
+
 </section>
+
 
 <section class="price-actions">
-    <div class="section-title"> Тарифы на услуги</div>
-    <div class="tariffs"></div>
-    <div class="text-related-to-tariffs">За совершение нотариальных действий нотариус, занимающийся частной практикой, взимает  единый нотариальный тариф (далее - нотариальный тариф), включающий федеральный и региональный тарифы.</div>
-    <div class="faq-link">Есть вопросы? Посмотрите раздел FAQ</div>
-    <div class="gos-link">Запишитесь на прием через госуслуги</div>
+    <header class="section-title">
+        <h2 >Тарифы на услуги</h2>
+    </header>
+
+    <!-- Список тарифов -->
+    <section class="tariffs">
+          <ul >
+        <!-- Добавь тарифы как элементы списка -->
+
+        <!-- и т. д. -->
+            </ul>
+        <button class="overlay-button">Подробнее</button>
+    </section>
+
+
+    <!-- Описание тарифов -->
+    <article class="text-related-to-tariffs">
+        <p>За совершение нотариальных действий нотариус, занимающийся частной практикой, взимает единый нотариальный тариф (далее - нотариальный тариф), включающий федеральный и региональный тарифы.</p>
+    </article>
+
+    <!-- Секция с кнопкой перехода к FAQ -->
+    <div class="faq-section">
+        <p class="faq-link">Есть вопросы? Посмотрите раздел FAQ</p>
+
+    </div>
+
+    <!-- Секция с кнопкой записи через госуслуги -->
+    <div class="gos-section">
+        <p class="gos-link">Запишитесь на прием через госуслуги</p>
+
+    </div>
 </section>
 
+
 {% endblock %}
+
+
+</script>
