@@ -135,7 +135,6 @@
     position: relative; /* Нужно для позиционирования псевдоэлементов */
     height: 114px; /* Фиксированная высота */
     width: calc(100% - 30px); /* Ширина с учетом отступов */
-     /* Фоновый цвет */
     margin-bottom: 30px; /* Отступ снизу */
 
     padding: 15px; /* Отступы со всех сторон по 15 пикселей */
@@ -200,32 +199,87 @@
     text-align: justify;
 
 }
-/*
+
+.price-actions{
+    grid-template-columns: 70% 30%;
+}
+
 .price-actions .section-title{
-    width: 1200px;
-    height: 71px;
-    background-color: #7E162E;
-    grid-column: span 2;
+    height: 71px; /* Высота блока */
+    width: 100%; /* Полная ширина блока */
+    grid-column: span 2; /* Занимает две колонки в сетке */
+    background-color: #7E162E; /* Фон блока */
+    margin-bottom: 30px; /* Отступ снизу */
+    border-radius: 10px;
+
+    /* Flexbox для центрирования текста по вертикали и горизонтали */
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
+
+    /* Размер шрифта */
+    font-size: 48px;
+    color: #fff; /* Белый текст для контраста с фоном */
+    box-sizing: border-box; /* Учитывает отступы в общей высоте */
+    text-align: center; /* Выравнивание текста по центру */
 }
 
 .tariffs{
-    width: 814px;
+    width: calc(100% - 30px);
     height: 394px;
-    background-color: #7E162E;
+    background-color: #F2F2F2;
     grid-row: span 3;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+
 }
 
 .text-related-to-tariffs{
-    width: 356px;
+    position: relative; /* Нужно для позиционирования псевдоэлементов */
+    width: 100%;
     height: 182px;
-    background-color: #7E162E;
+    margin-bottom: 30px;
+
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    text-align: justify; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 18px; /* Размер шрифта */
+    box-sizing: border-box; /* Учитывает отступы в общий размер */
+}
+
+.text-related-to-tariffs::before,
+.text-related-to-tariffs::after {
+    content: ""; /* Необходимо для отображения псевдоэлементов */
+    position: absolute; /* Абсолютное позиционирование относительно .article */
+    border-style: solid; /* Стиль границы */
+    border-color:  #7E162E;; /* Цвет границы */
+}
+
+.text-related-to-tariffs::before {
+    top: 0; left: 0; /* Позиционирование в левом верхнем углу */
+    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
+    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
+    border-width: 5px 0 0 5px; /* Толщина линии только сверху и слева */
+}
+
+.text-related-to-tariffs::after {
+    bottom: 0; right: 0; /* Позиционирование в правом нижнем углу */
+    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
+    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
+    border-width: 0 5px 5px 0; /* Толщина линии только снизу и справа */
 }
 
 
 
 .faq-link , .gos-link{
-    width: 356px;
+    width: 100%;
     height: 77px;
-    background-color: #7E162E;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
 }
 
+.faq-link{
+    margin-bottom: 30px;
+}
