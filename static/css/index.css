@@ -1,13 +1,3 @@
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
 .name-and-logo, .about, .notarial-actions, .price-actions{
     width: 100%;
     display: grid;
@@ -15,19 +5,10 @@
 }
 
 
-.name-and-logo, .about, .price-actions{
-    grid-template-columns: 70% 30%;
-
+.name-and-logo {
+    grid-template-columns: 70% 30%; /* Отвод 70% пространства для названия и 30% для логотипа */
+    ; /* Центрирование содержимого по вертикали */
 }
-
-
-
-.notarial-actions{
-    grid-template-columns: 30% 70%;
-
-}
-
-
 
 .notary-name {
     grid-column: 1 / 2; /* Занимает первую колонку в гриде */
@@ -69,6 +50,9 @@
 
 
 
+.about{
+     grid-template-columns: 70% 30%;
+}
 
 .description, .license-number{
     position: relative;
@@ -95,7 +79,7 @@
     width: 113px;
     height: 45px;
     border: none; /* Удаление стандартной рамки */
-    background-color: #7E162E;
+   background-color: #7E162E;
     color: white; /* Цвет текста */
     cursor: pointer; /* Курсор в виде указателя для улучшения UX */
     border-radius: 5px; /* Скругление углов кнопки */
@@ -143,8 +127,12 @@
 
 
 
+.notarial-actions{
+    grid-template-columns: 30% 70%;
 
-.notarial-actions .section-title,  .price-actions .section-title{
+}
+
+.notarial-actions .section-title {
     height: auto; /* Высота блока */
     width: 100%; /* Полная ширина блока */
     grid-column: span 2; /* Занимает две колонки в сетке */
@@ -167,7 +155,7 @@
 
 .article {
     position: relative; /* Нужно для позиционирования псевдоэлементов */
-     min-height: 114px; /* Фиксированная высота */
+    height: 114px; /* Фиксированная высота */
     width: calc(100% - 30px); /* Ширина с учетом отступов */
     margin-bottom: 30px; /* Отступ снизу */
 
@@ -203,7 +191,7 @@
 
 .actions-section {
     position: relative; /* Устанавливает этот элемент как контекст позиционирования */
-    height: 100%;
+    height: 439px;
     width: 100%;
     grid-row: span 3;
     border-radius: 10px;
@@ -213,10 +201,74 @@
     margin: 0;
 }
 
+
+
+.actions-list{
+
+
+}
+
+.view-article-button{
+    height: 58px;
+    width: calc(100% - 30px);
+    background-color: #7E162E;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+}
+
+.text-related-to-notary{
+    height: 200px;
+    width: calc(100% - 30px);
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 18px; /* Размер шрифта */
+    box-sizing: border-box; /* Учитывает отступы в общий размер */
+    text-align: justify;
+
+}
+
+.price-actions{
+    grid-template-columns: 70% 30%;
+}
+
+.price-actions .section-title{
+    height: auto; /* Высота блока */
+    width: 100%; /* Полная ширина блока */
+    grid-column: span 2; /* Занимает две колонки в сетке */
+    background-color: #7E162E; /* Фон блока */
+    margin-bottom: 30px; /* Отступ снизу */
+    border-radius: 10px;
+
+    /* Flexbox для центрирования текста по вертикали и горизонтали */
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
+
+    /* Размер шрифта */
+    font-size: 24px;
+    color: #fff; /* Белый текст для контраста с фоном */
+    box-sizing: border-box; /* Учитывает отступы в общей высоте */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.tariffs{
+    position: relative;
+    width: calc(100% - 30px);
+    height: 394px;
+    background-color: #F2F2F2;
+    grid-row: span 3;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+
+}
+
 .text-related-to-tariffs{
     position: relative; /* Нужно для позиционирования псевдоэлементов */
     width: 100%;
-    min-height: 182px;
+    height: 182px;
     margin-bottom: 30px;
     margin-left: 0;
     padding: 15px; /* Отступы со всех сторон по 15 пикселей */
@@ -251,53 +303,7 @@
 
 
 
-.actions-list{
-
-
-}
-
-.view-article-button{
-    height: 58px;
-    width: calc(100% - 30px);
-    background-color: #7E162E;
-    margin-bottom: 30px;
-    border: none; /* Удаление стандартной рамки */
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
-}
-
-.text-related-to-notary{
-    min-height: 200px;
-    width: calc(100% - 30px);
-    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
-    display: flex; /* Использование flexbox для центрирования содержимого */
-    align-items: center; /* Центрирование по вертикали */
-    justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
-    font-size: 18px; /* Размер шрифта */
-    box-sizing: border-box; /* Учитывает отступы в общий размер */
-    text-align: justify;
-
-}
-
-
-
-
-.tariffs{
-    position: relative;
-    width: calc(100% - 30px);
-    height: 100%;
-    background-color: #F2F2F2;
-    grid-row: span 3;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
-
-}
-
-
-
-
 .faq-link , .gos-link{
-    position: relative;
     margin: 0;
     padding: 15px; /* Отступы со всех сторон по 15 пикселей */
     display: flex; /* Использование flexbox для центрирования содержимого */
@@ -314,27 +320,4 @@
 
 .faq-link{
     margin-bottom: 30px;
-}
-
-.faq-button, .gos-button {
-    width: 45px; /* Ширина кнопки */
-    height: 45px; /* Высота кнопки */
-    background-color: #7E162E; /* Цвет фона кнопки */
-    color: white; /* Цвет текста */
-    font-size: 24px; /* Размер шрифта символа */
-    display: flex; /* Использование flexbox для центрирования символа */
-    align-items: center; /* Вертикальное центрирование символа */
-    justify-content: center; /* Горизонтальное центрирование символа */
-    border-radius: 10%; /* Процентное скругление углов */
-    position: absolute; /* Абсолютное позиционирование */
-    right: 0; /* Отступ справа */
-    bottom: 0; /* Отступ снизу */
-    border: none; /* Удаление стандартной рамки */
-    cursor: pointer; /* Курсор в виде указателя для улучшения UX */
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
-}
-
-/* Добавление символа '>' с использованием псевдо-элемента */
-.faq-button::after, .gos-button::after {
-    content: '>'; /* Символ '>' */
 }
