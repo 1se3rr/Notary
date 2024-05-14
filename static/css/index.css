@@ -214,6 +214,7 @@
     background-color: #7E162E;
     margin-bottom: 30px;
     border-radius: 10px;
+    border: none;
     box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
 }
 
@@ -304,6 +305,7 @@
 
 
 .faq-link , .gos-link{
+    position: relative;
     margin: 0;
     padding: 15px; /* Отступы со всех сторон по 15 пикселей */
     display: flex; /* Использование flexbox для центрирования содержимого */
@@ -321,3 +323,26 @@
 .faq-link{
     margin-bottom: 30px;
 }
+
+.faq-button, .gos-button {
+    border: none;
+    width: 45px; /* Ширина кнопки */
+    height: 45px; /* Высота кнопки */
+    background-color: #7E162E; /* Цвет фона кнопки */
+    color: white; /* Цвет текста */
+    font-size: 24px; /* Размер шрифта символа */
+    display: flex; /* Использование flexbox для центрирования символа */
+    align-items: center; /* Вертикальное центрирование символа */
+    justify-content: center; /* Горизонтальное центрирование символа */
+    border-radius: 10%; /* Процентное скругление углов */
+    position: absolute; /* Абсолютное позиционирование */
+    right: 0; /* Отступ справа */
+    bottom: 0; /* Отступ снизу */
+    cursor: pointer; /* Курсор в виде указателя для улучшения UX */
+}
+
+/* Добавление символа '>' с использованием псевдо-элемента */
+.faq-button::after, .gos-button::after {
+    content: '>'; /* Символ '>' */
+}
+
