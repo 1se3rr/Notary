@@ -1,0 +1,63 @@
+.about{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: auto;
+}
+
+.description, .license-number{
+    position: relative;
+    height: 116px;
+    width: calc(100% - 30px); /* Ширина с учетом отступов */
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 24px; /* Размер шрифта */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+    background-color: #F2F2F2; /* Цвет фона */
+    text-align: justify; /* Выравнивание текста по левому краю */
+    color: #333; /* Цвет текста */
+    box-sizing: border-box; /* Учитывает отступы в общий размер */
+    margin: 0;
+}
+
+.description{
+    margin-bottom: 30px;
+}
+
+.working-hours{
+    position: relative;
+    height: 262px;
+    width: 100%;
+    grid-row: span 2;
+    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    display: flex; /* Использование flexbox для центрирования содержимого */
+    align-items: center; /* Центрирование по вертикали */
+    text-align: justify; /* Выравнивание по левому краю внутри flex-контейнера */
+    font-size: 18px; /* Размер шрифта */
+    box-sizing: border-box; /* Учитывает отступы в общий размер */
+}
+
+.working-hours::before,
+.working-hours:after {
+    content: ""; /* Необходимо для отображения псевдоэлементов */
+    position: absolute; /* Абсолютное позиционирование относительно .article */
+    border-style: solid; /* Стиль границы */
+    border-color:  #7E162E;; /* Цвет границы */
+}
+
+.working-hours:before {
+    top: 0; left: 0; /* Позиционирование в левом верхнем углу */
+    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
+    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
+    border-width: 5px 0 0 5px; /* Толщина линии только сверху и слева */
+}
+
+.working-hours:after {
+    bottom: 0; right: 0; /* Позиционирование в правом нижнем углу */
+    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
+    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
+    border-width: 0 5px 5px 0; /* Толщина линии только снизу и справа */
+}
