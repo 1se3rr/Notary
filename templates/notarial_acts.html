@@ -1,19 +1,20 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/notarial_acts.css') }}">
-    <script src="{{ url_for('static', filename='js/') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/notarial_acts.css') }}">
+<script src="{{ url_for('static', filename='js/') }}"></script>
 {% endblock %}
 
 {% block title %}
 Нотариальные действия
 {% endblock %}
 
-
 {% block content %}
+<section class="notary-info">
+    <h1 class="sr-only">Нотариальные действия нашей конторы</h1>
 
-    <section class="notary-info">
     <section class="notary-description">
+        <h2 class="sr-only">Описание нотариальной конторы</h2>
         <p>Наша нотариальная контора совершает все виды нотариальных действий, предусмотренных действующим законодательством.</p>
     </section>
 
@@ -23,14 +24,17 @@
     </figure>
 
     <section class="notary-services">
+        <h2 class="sr-only">Список нотариальных услуг</h2>
         <p>Список охватывает широкий спектр нотариальных услуг, варьирующихся от удостоверения доверенностей и завещаний до регистрации уведомлений о залоге и выдачи свидетельств о праве на наследство, предоставляемых Нотариальной палатой Ямало-Ненецкого автономного округа.</p>
     </section>
 
     <section class="notary-article-link">
+        <h2 class="sr-only">Основы законодательства о нотариате</h2>
         <p> <a href="URL-статьи">ст. 35 «Основ законодательства Российской Федерации о нотариате»</a>.</p>
     </section>
 
     <aside class="faq-section">
+        <h2 class="sr-only">Госуслуги и запись на прием</h2>
         <p>Запишитесь на прием через госуслуги</p>
         <button class="faq-button"></button>
     </aside>

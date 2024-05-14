@@ -1,26 +1,25 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{% block head%}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/about_us.css')}}">
-    <link rel="" href="{{ url_for('static', filename='js/.js')}}">
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tariffs.css') }}">
+<script src="{{ url_for('static', filename='js/') }}"></script>
 {% endblock %}
 
 {% block title %}
-О нас
+Нотариальные тарифы и регуляции
 {% endblock %}
 
 {% block content %}
+<section class="legal-document">
+    <article>
+        <h1 class="sr-only">Приказ Минюста России о тарифах</h1>
+        <p>Приказ Минюста России от 12.09.2023 N 253 "Об утверждении формулы расчета экономически обоснованного предельного размера регионального тарифа и перечня льгот, применяемых к региональным тарифам" (Зарегистрировано в Минюсте России 13.09.2023 N 75196).</p>
+    </article>
 
-    <section class="about">
-    <p class="description">Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна</p>
-
-
-    <time class="working-hours">
-        <!-- Добавьте сюда время работы или оставьте пустым для дальнейшего наполнения -->
-    </time>
-
-
-    <p class="license-number">Лицензия №98 выдана 23 декабря 2014 года Управлением Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу</p>
-    </section>
-
+    <div class="gos-link">
+        <h2 class="sr-only">Запись на прием через госуслуги</h2>
+        <p>Запишитесь на прием через госуслуги</p>
+        <button class="gos-button">Перейти</button>
+    </div>
+</section>
 {% endblock %}

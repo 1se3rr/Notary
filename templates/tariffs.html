@@ -1,27 +1,25 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{% block head%}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tariffs.css') }}">
-    <script src="{{ url_for('static', filename='js/') }}"></script>
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tariffs.css') }}">
+<script src="{{ url_for('static', filename='js/') }}"></script>
 {% endblock %}
 
 {% block title %}
-
+Нотариальные тарифы и регуляции
 {% endblock %}
 
-
 {% block content %}
-
 <section class="legal-document">
     <article>
-        <!--<h1>Приказ Минюста России</h1>-->
+        <h1 class="sr-only">Приказ Минюста России о тарифах</h1>
         <p>Приказ Минюста России от 12.09.2023 N 253 "Об утверждении формулы расчета экономически обоснованного предельного размера регионального тарифа и перечня льгот, применяемых к региональным тарифам" (Зарегистрировано в Минюсте России 13.09.2023 N 75196).</p>
     </article>
 
     <div class="gos-link">
+        <h2 class="sr-only">Запись на прием через госуслуги</h2>
         <p>Запишитесь на прием через госуслуги</p>
-        <button class="gos-button"></button>
+        <button class="gos-button">Перейти</button>
     </div>
 </section>
-
 {% endblock %}
