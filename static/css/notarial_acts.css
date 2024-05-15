@@ -119,3 +119,46 @@
 .faq-button::after {
     content: '>'; /* Символ '>' */
 }
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.category-list, .actions-list {
+    list-style: none;
+    padding: 0;
+}
+
+.category-item {
+    margin-bottom: 10px;
+}
+
+.actions-list {
+    padding-left: 20px;
+}
+
+.category-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: left;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.category-button:hover {
+    background-color: #0056b3;
+}
+
+.action-item {
+    padding: 5px 0;
+}
+
+
+
+

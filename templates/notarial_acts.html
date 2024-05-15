@@ -2,7 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/notarial_acts.css') }}">
-<script src="{{ url_for('static', filename='js/') }}"></script>
+<script src="{{ url_for('static', filename='js/notarial_acts.js') }}"></script>
 {% endblock %}
 
 {% block title %}
@@ -39,5 +39,32 @@
         <button class="faq-button"></button>
     </aside>
 </section>
+
+<div class="container">
+    <h1>Нотариальные действия</h1>
+    <ul class="category-list">
+        {% for category in categories %}
+        <li class="category-item">
+            <button class="category-button" onclick="toggleActions('actions-container-{{ category.id }}')">
+                {{ category.name }}
+            </button>
+            <ul id="actions-container-{{ category.id }}" class="actions-list" style="display: none;">
+                {% for action in category.actions %}
+                <li class="action-item">{{ action.name }} - {{ action.description }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+function toggleActions(elementId) {
+    var element = document.getElementById(elementId);
+    element.style.display = (element.style.display === 'none' ? 'block' : 'none');
+}
+</script>
+
+
 
 {% endblock %}
