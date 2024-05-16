@@ -2,7 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/notarial_acts.css') }}">
-<script src="{{ url_for('static', filename='js/notarial_acts.js') }}"></script>
+
 {% endblock %}
 
 {% block title %}
@@ -10,18 +10,33 @@
 {% endblock %}
 
 {% block content %}
+
+
 <section class="notary-info">
     <h1 class="sr-only">Нотариальные действия нашей конторы</h1>
+
+     <section class="category-tabs">
+        {% for category in categories %}
+        <div class="category-tab" data-category-id="{{ category.id }}">
+            {{ category.name }} ({{ category.actions|length }})
+        </div>
+        {% endfor %}
+    </section>
+
+<div id="actions-list" class="actions-list"></div>
+
 
     <section class="notary-description">
         <h2 class="sr-only">Описание нотариальной конторы</h2>
         <p>Наша нотариальная контора совершает все виды нотариальных действий, предусмотренных действующим законодательством.</p>
     </section>
 
-    <figure class="notary-photo">
+
+  <figure class="notary-photo">
         <img src="" alt="Фотография нотариальной конторы">
         <figcaption>Нотариальная контора</figcaption>
     </figure>
+
 
     <section class="notary-services">
         <h2 class="sr-only">Список нотариальных услуг</h2>
@@ -38,33 +53,23 @@
         <p>Запишитесь на прием через госуслуги</p>
         <button class="faq-button"></button>
     </aside>
+
+
+
+
 </section>
 
-<div class="container">
-    <h1>Нотариальные действия</h1>
-    <ul class="category-list">
-        {% for category in categories %}
-        <li class="category-item">
-            <button class="category-button" onclick="toggleActions('actions-container-{{ category.id }}')">
-                {{ category.name }}
-            </button>
-            <ul id="actions-container-{{ category.id }}" class="actions-list" style="display: none;">
-                {% for action in category.actions %}
-                <li class="action-item">{{ action.name }} - {{ action.description }}</li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-
-<script>
-function toggleActions(elementId) {
-    var element = document.getElementById(elementId);
-    element.style.display = (element.style.display === 'none' ? 'block' : 'none');
-}
-</script>
 
 
 
+
+
+
+
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/notarial_acts.js') }}"></script>
 {% endblock %}

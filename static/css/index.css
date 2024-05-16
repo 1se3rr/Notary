@@ -190,22 +190,62 @@
 }
 
 .actions-section {
-    position: relative; /* Устанавливает этот элемент как контекст позиционирования */
-    height: 439px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 439px; /* Если высота фиксирована */
     width: 100%;
     grid-row: span 3;
     border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
-    background-color: #F2F2F2; /* Цвет фона */
-    padding: 0;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
+    background-color: #F2F2F2;
+    padding: 40px; /* Добавляем padding для внутреннего контента */
     margin: 0;
+    box-sizing: border-box;
+    justify-content: center; /* Центрирование содержимого по вертикали */
+
 }
 
+.categories-container {
+    display: flex;
+    justify-content: space-around; /* Равномерное распределение колонок внутри контейнера */
+    width: 100%;
+    padding: 0 30px; /* Дополнительные отступы слева и справа для внутреннего контента */
+}
 
+.actions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 10px; /* Отступы между колонками */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрирование элементов списка по вертикали */
+}
 
-.actions-list{
+.actions-list li {
+    font-size: 24px;
+    padding: 15px; /* Увеличенные отступы внутри каждой категории */
+    margin-bottom: 20px; /* Увеличенные отступы между категориями */
+    align-items: center;
+    display: flex;
+}
 
+.actions-list li img {
+    margin-right: 10px;
+    width: 24px; /* Размеры иконки, если нужно */
+    height: 24px;
+}
 
+.overlay-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #7E162E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .view-article-button{
