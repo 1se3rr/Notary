@@ -386,4 +386,75 @@
     content: '>'; /* Символ '>' */
 }
 
+.yandex{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: auto;
 
+}
+
+
+.yandex .map-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.yandex .map-link {
+    color: #eee;
+    font-size: 12px;
+    position: absolute;
+}
+
+.yandex .map-link:first-of-type {
+    top: 0;
+}
+
+.yandex .map-link:last-of-type {
+    top: 14px;
+}
+
+.yandex .map-frame {
+    position: relative;
+}
+
+.yandex .reviews-container {
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+}
+
+.yandex .reviews-frame {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.yandex .reviews-link {
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #b3b3b3;
+    font-size: 10px;
+    font-family: 'YS Text', sans-serif;
+    padding: 0 20px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-height: 14px;
+    white-space: nowrap;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.map-container iframe{
+    width: calc(100% - 30px);
+    height: 800px;
+}

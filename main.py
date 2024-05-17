@@ -93,24 +93,22 @@ def categories_api():
 
 @app.route('/api/tariffs')
 def tariffs_api():
-    try:
-        titles = Title.query.all()
-        tariffs_data = [{
-            'title': title.name,
-            'services': [{
-                'name': service.name,
-                'norm': service.article_norm.name,
-                'tariffs': [{
-                    'type': tariff_price.tariff_type.name,
-                    'price': tariff_price.price,
-                    'description': tariff_price.description
-                } for tariff_price in service.tariff_prices]
-            } for service in title.services]
-        } for title in titles]
-        return jsonify(tariffs_data)
-    except Exception as e:
-        app.logger.error(f"Error fetching tariffs data: {str(e)}")
-        return jsonify({'error': 'Internal Server Error'}), 500
+    titles = Title.query.all()
+    tariffs_data = [{
+        'title': title.name,
+        'services': [{
+            'name': service.name,
+            'norm': service.article_norm.name if service.article_norm else '',
+            'tariffs': [{
+                'type': price.tariff_type.name,
+                'price': price.price,
+                'description': price.description
+            } for price in service.tariff_prices]
+        } for service in title.services]
+    } for title in titles]
+
+    return jsonify(tariffs_data)
+
 
 
 @app.route("/tariffs")

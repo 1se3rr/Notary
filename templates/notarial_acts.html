@@ -15,15 +15,7 @@
 <section class="notary-info">
     <h1 class="sr-only">Нотариальные действия нашей конторы</h1>
 
-     <section class="category-tabs">
-        {% for category in categories %}
-        <div class="category-tab" data-category-id="{{ category.id }}">
-            {{ category.name }} ({{ category.actions|length }})
-        </div>
-        {% endfor %}
-    </section>
 
-<div id="actions-list" class="actions-list"></div>
 
 
     <section class="notary-description">
@@ -61,6 +53,15 @@
 
 
 
+ <section class="category-tabs">
+        {% for category in categories %}
+        <div class="category-tab" data-category-id="{{ category.id }}">
+            {{ category.name }} ({{ category.actions|length }})
+        </div>
+        {% endfor %}
+
+<div id="actions-list" class="actions-list"></div>
+    </section>
 
 
 
