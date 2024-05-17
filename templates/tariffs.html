@@ -2,7 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/tariffs.css') }}">
-<script src="{{ url_for('static', filename='js/') }}"></script>
+<script src="{{ url_for('static', filename='js/tariffs.js') }}"></script>
 {% endblock %}
 
 {% block title %}
@@ -20,6 +20,13 @@
         <h2 class="sr-only">Запись на прием через госуслуги</h2>
         <p>Запишитесь на прием через госуслуги</p>
         <button class="gos-button">Перейти</button>
+    </div>
+
+    <div class="tariffs-section">
+        <h2>Тарифы</h2>
+        <div id="tariffs-container">
+            <!-- Данные будут загружены с помощью JavaScript -->
+        </div>
     </div>
 </section>
 {% endblock %}
