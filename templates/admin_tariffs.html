@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}Административный кабинет - Тарифы{% endblock %}
+
+{% block content %}
+<h1>Административный кабинет - Тарифы</h1>
+
+<h2>Управление тарифами</h2>
+<form method="POST" action="{{ url_for('admin_tariffs') }}">
+    <input type="hidden" name="form_type" value="add_tariff">
+    <label for="price">Цена:</label>
+    <input type="number" id="price" name="price" required>
+    <label for="description">Описание:</label>
+    <input type="text" id="description" name="description">
+    <label for="tariff_type_id">Тип тарифа:</label>
+    <select id="tariff_type_id" name="tariff_type_id">
+        {% for tariff_type in tariff_types %}
+        <option value="{{ tariff_type.id_tariff_types }}">{{ tariff_type.name }}</option>
+        {% endfor %}
+    </select>
+    <label for="service_id">Услуга:</label>
+    <select id="service_id" name="service_id">
+        {% for service in services %}
+        <option value="{{ service.id_service }}">{{ service.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Добавить</button>
+</form>
+
+<ul>
+    {% for tariff in tariffs %}
+    <li>
+        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
+            <input type="hidden" name="form_type" value="edit_tariff">
+            <input type="hidden" name="id" value="{{ tariff.id_price }}">
+            <input type="number" name="price" value="{{ tariff.price }}" required>
+            <input type="text" name="description" value="{{ tariff.description }}">
+            <select name="tariff_type_id">
+                {% for tariff_type in tariff_types %}
+                <option value="{{ tariff_type.id_tariff_types }}" {% if tariff_type.id_tariff_types == tariff.tariff_type_id %}selected{% endif %}>{{ tariff_type.name }}</option>
+                {% endfor %}
+            </select>
+            <select name="service_id">
+                {% for service in services %}
+                <option value="{{ service.id_service }}" {% if service.id_service == tariff.service_id %}selected{% endif %}>{{ service.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Сохранить</button>
+        </form>
+        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
+            <input type="hidden" name="form_type" value="delete_tariff">
+            <input type="hidden" name="id" value="{{ tariff.id_price }}">
+            <button type="submit">Удалить</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Управление заголовками</h2>
+<form method="POST" action="{{ url_for('admin_tariffs') }}">
+    <input type="hidden" name="form_type" value="add_title">
+    <label for="name">Название заголовка:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Добавить</button>
+</form>
+
+<ul>
+    {% for title in titles %}
+    <li>
+        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
+            <input type="hidden" name="form_type" value="edit_title">
+            <input type="hidden" name="id" value="{{ title.id_title }}">
+            <input type="text" name="name" value="{{ title.name }}" required>
+            <button type="submit">Сохранить</button>
+        </form>
+        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
+            <input type="hidden" name="form_type" value="delete_title">
+            <input type="hidden" name="id" value="{{ title.id_title }}">
+            <button type="submit">Удалить</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Управление нормами статей</h2>
+<form method="POST" action="{{ url_for('admin_tariffs') }}">
+    <input type="hidden" name="form_type" value="add_article_norm">
+    <label for="name">Название нормы статьи:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Добавить</button>
+</form>
+
+<ul>
+    {% for article_norm in article_norms %}
+    <li>
+        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
+            <input type="hidden" name="form_type" value="edit_article_norm">
+            <input type="hidden" name="id" value="{{ article_norm.id_norm }}">
+            <input type="text" name="name" value="{{ article_norm.name }}" required>
+            <button type="submit">Сохранить</button>
+        </form>
+        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
+            <input type="hidden" name="form_type" value="delete_article_norm">
+            <input type="hidden" name="id" value="{{ article_norm.id_norm }}">
+            <button type="submit">Удалить</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

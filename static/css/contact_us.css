@@ -1,14 +1,39 @@
-.about{
+
+
+
+.contact{
     width: 100%;
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
+    gap: 30px;
 }
 
-.description, .license-number{
+.whatsapp-link, .telegram-link, .gos-link{
+    width: 100%;
     position: relative;
-    height: 116px;
-    width: calc(100% - 30px); /* Ширина с учетом отступов */
+    overflow: hidden;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+    background-color: #F2F2F2; /* Цвет фона */
+    border: none;
+}
+
+
+
+.whatsapp img, .telegram img{
+    width: 100%; /* Ширина изображения равна ширине контейнера */
+    height: auto; /* Высота автоматически подстраивается под ширину */
+    border-radius: 10px; /* Скругление углов изображения, если это необходимо */
+}
+
+.adress{
+    position: relative;
+    height: auto;
+    width: 100%; /* Ширина с учетом отступов */
     padding: 15px; /* Отступы со всех сторон по 15 пикселей */
     display: flex; /* Использование flexbox для центрирования содержимого */
     align-items: center; /* Центрирование по вертикали */
@@ -23,117 +48,44 @@
     margin: 0;
 }
 
-.description{
-    margin-bottom: 30px;
-}
-
-.working-hours{
+.contact-info{
+    display: flex;
     position: relative;
     height: 262px;
     width: 100%;
-    grid-row: span 2;
-    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
-    display: flex; /* Использование flexbox для центрирования содержимого */
-    align-items: center; /* Центрирование по вертикали */
-    text-align: justify; /* Выравнивание по левому краю внутри flex-контейнера */
-    font-size: 18px; /* Размер шрифта */
-    box-sizing: border-box; /* Учитывает отступы в общий размер */
+    padding: 15px;
+    text-align: justify;
+    font-size: 18px;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    align-content: center;
 }
 
-.working-hours::before,
-.working-hours:after {
+.contact-info p{
+    margin: 0;
+    padding: 0;
+}
+
+.contact-info::before,
+.contact-info:after {
     content: ""; /* Необходимо для отображения псевдоэлементов */
     position: absolute; /* Абсолютное позиционирование относительно .article */
     border-style: solid; /* Стиль границы */
     border-color:  #7E162E;; /* Цвет границы */
 }
 
-.working-hours:before {
+.contact-info:before {
     top: 0; left: 0; /* Позиционирование в левом верхнем углу */
     width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
     height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
     border-width: 5px 0 0 5px; /* Толщина линии только сверху и слева */
 }
 
-.working-hours:after {
+.contact-info:after {
     bottom: 0; right: 0; /* Позиционирование в правом нижнем углу */
     width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
     height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
     border-width: 0 5px 5px 0; /* Толщина линии только снизу и справа */
 }
-
-
-.certificates-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
-}
-
-.certificate {
-    cursor: pointer;
-}
-
-.certificate img {
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-/* Модальное окно */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-    position: relative;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    height: 90%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    background-color: #fefefe;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    color: #fff;
-    font-size: 35px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.certificates-section{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    column-gap: 30px;
-    padding: 0;
-}
-
-.certificates-section iframe{
-    width: 100% ;
-    height:600px;
-}
-
-
-

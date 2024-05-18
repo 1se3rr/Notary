@@ -69,22 +69,20 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <p>Норма: ${serviceData.norm}</p>
                                     <div class="tariffs-container">
                                         <div class="tariff-column">
-                                            <h3>Федеральные Тарифы</h3>
+                                            <h3>Федеральные тарифы (руб)</h3>
                                             ${federalTariffs.map(tariff => `
                                                 <div class="tariff-block">
-                                                    <p><strong>Тип:</strong> ${tariff.type}</p>
                                                     <p><strong>Цена:</strong> ${tariff.price}</p>
-                                                    <p><strong>Описание:</strong> ${tariff.description}</p>
+                                                    ${tariff.description ? `<p><strong>Описание:</strong> ${tariff.description}</p>` : ''}
                                                 </div>
                                             `).join('')}
                                         </div>
                                         <div class="tariff-column">
-                                            <h3>Региональные Тарифы</h3>
+                                            <h3>Региональные тарифы (руб)</h3>
                                             ${regionalTariffs.map(tariff => `
                                                 <div class="tariff-block">
-                                                    <p><strong>Тип:</strong> ${tariff.type}</p>
                                                     <p><strong>Цена:</strong> ${tariff.price}</p>
-                                                    <p><strong>Описание:</strong> ${tariff.description}</p>
+                                                    ${tariff.description ? `<p><strong>Описание:</strong> ${tariff.description}</p>` : ''}
                                                 </div>
                                             `).join('')}
                                         </div>

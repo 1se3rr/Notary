@@ -1,5 +1,10 @@
 {% extends 'base.html'%}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/FAQ.css') }}">
+
+{% endblock %}
+
 {% block title %}
 FAQ
 {% endblock %}
@@ -7,5 +12,45 @@ FAQ
 
 
 {% block content %}
-<h1>FAQ</h1>
+
+    <section class="documents-section">
+        <div class="document-item">
+            <p>Какие документы нужны для открытия наследственного дела?</p>
+              <button onclick="location.href='https://drive.google.com/file/d/1GfvnaL-wzFRwfuu4fWYmHQyUjBSmPR8N/preview'" allow="autoplay">
+              </button>
+        </div>
+
+        <div class="document-item">
+            <p>Какие условия выезда и въезда детей из Российской Федерации?</p>
+             <button onclick="location.href='https://drive.google.com/file/d/1ndOtZ0XwdTu5ytA8GQXr4QI8bNBQflXn/preview'">
+            </button>
+        </div>
+
+         <div class="document-item">
+            <p>Как открыть наследственные дела к имуществу умерших?</p>
+            <button onclick="location.href='https://drive.google.com/file/d/1J26MXUma3ZCnOcXv79g3ikI9x_XNZeFj/preview'">
+            </button>
+        </div>
+
+        <div class="document-item">
+            <p>Какие документы нужны для удостоверения договоров с недвижимым имуществом?</p>
+            <button onclick="location.href='https://drive.google.com/file/d/18zI-L_xLspoRmnfDxAxC6vaHTQkOHmCR/preview'" allow="autoplay">
+            </button>
+        </div>
+
+        <div class="document-item">
+            <p>Какие документы нужны для удостоверения договора отчуждения доли ООО?</p>
+            <button onclick="location.href='https://drive.google.com/file/d/1uUjt5xXzANHIPgVpVQ7O446otX7nvU5b/preview'">
+            </button>
+        </div>
+
+
+        <div class="document-item">
+            <p>Какие документы нужны для удостоверения соглашения об исполнении обязательств (в связи с использованием средств материнского капитала и любых социальных выплат)?</p>
+           <button onclick="location.href='https://drive.google.com/file/d/1QEF3cln5po5qHdydw68HrzIzh8qjQFRt/preview'">
+            </button>
+        </div>
+
+    </section>
+
 {% endblock %}

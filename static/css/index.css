@@ -32,13 +32,12 @@
 .notary-logo {
     grid-column: 2 / 2; /* Занимает вторую колонку в гриде */
     width: 100%;
-    padding-top: 100%; /* Высота элемента равна его ширине */
     position: relative;
     overflow: hidden;
     margin: 0;
     box-sizing: border-box;
     border-radius: 10px;
-    background: url('/static/img/logo.jpg') center center no-repeat; /* Сокращенный синтаксис для фона */
+
     background-size: cover;
 }
 
