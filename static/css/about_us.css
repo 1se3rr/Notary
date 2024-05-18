@@ -120,3 +120,17 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.certificates-section{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    column-gap: 30px;
+    padding: 0;
+}
+
+.certificates-section iframe{
+    width: 100% ;
+    height:600px;
+}

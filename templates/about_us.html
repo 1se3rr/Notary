@@ -2,7 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/about_us.css') }}">
-<script src="{{ url_for('static', filename='js/about_us.js') }}"></script>
+
 {% endblock %}
 
 {% block title %}
@@ -22,16 +22,11 @@
         <p class="license-number">Приказ о назначении № 6 от 02 февраля 2021 года Управления Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу</p>
     </section>
 
+
      <section class="certificates-section">
-        <div class="certificate" data-pdf="{{ url_for('static', filename='certificate1.pdf') }}">
-            <img src="{{ url_for('static', filename='pdf/certificate1.pdf') }}" alt="Certificate 1">
-        </div>
-        <div class="certificate" data-pdf="{{ url_for('static', filename='certificate2.pdf') }}">
-            <img src="{{ url_for('static', filename='pdf/certificate2.pdf') }}" alt="Certificate 2">
-        </div>
-        <div class="certificate" data-pdf="{{ url_for('static', filename='certificate3.pdf') }}">
-            <img src="{{ url_for('static', filename='pdf/certificate3.pdf') }}" alt="Certificate 3">
-        </div>
+        <iframe src="https://drive.google.com/file/d/1r72UObxN_UPNWpOZtirbMmLtYRkd2PIZ/preview"  allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/12J7kzBoWKZL5oJVUB7dKgbFjk_N2bS7J/preview"  allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/10jo093lVcA8VDz_hW7LGkW27fxfx0vTz/preview"  allow="autoplay"></iframe>
     </section>
 
 
