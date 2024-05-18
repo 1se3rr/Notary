@@ -1,111 +1,139 @@
-{% extends 'base.html' %}
-
-{% block title %}Административный кабинет - Тарифы{% endblock %}
-
-{% block content %}
-<h1>Административный кабинет - Тарифы</h1>
-
-<h2>Управление тарифами</h2>
-<form method="POST" action="{{ url_for('admin_tariffs') }}">
-    <input type="hidden" name="form_type" value="add_tariff">
-    <label for="price">Цена:</label>
-    <input type="number" id="price" name="price" required>
-    <label for="description">Описание:</label>
-    <input type="text" id="description" name="description">
-    <label for="tariff_type_id">Тип тарифа:</label>
-    <select id="tariff_type_id" name="tariff_type_id">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление тарифами</title>
+</head>
+<body>
+    <h1>Управление тарифами</h1>
+    <h2>Типы тарифов</h2>
+    <ul>
         {% for tariff_type in tariff_types %}
-        <option value="{{ tariff_type.id_tariff_types }}">{{ tariff_type.name }}</option>
+        <li>
+            <form method="post">
+                <input type="hidden" name="form_type" value="edit_tariff_type">
+                <input type="hidden" name="id" value="{{ tariff_type.id_tariff_types }}">
+                <label>Название:</label>
+                <input type="text" name="name" value="{{ tariff_type.name }}">
+                <button type="submit">Изменить</button>
+            </form>
+            <form method="post">
+                <input type="hidden" name="form_type" value="delete_tariff_type">
+                <input type="hidden" name="id" value="{{ tariff_type.id_tariff_types }}">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
         {% endfor %}
-    </select>
-    <label for="service_id">Услуга:</label>
-    <select id="service_id" name="service_id">
+    </ul>
+    <form method="post">
+        <input type="hidden" name="form_type" value="add_tariff_type">
+        <label>Добавить тип тарифа:</label>
+        <input type="text" name="name">
+        <button type="submit">Добавить</button>
+    </form>
+
+    <h2>Сервисы</h2>
+    <ul>
         {% for service in services %}
-        <option value="{{ service.id_service }}">{{ service.name }}</option>
+        <li>
+            <form method="post">
+                <input type="hidden" name="form_type" value="edit_service">
+                <input type="hidden" name="id" value="{{ service.id_service }}">
+                <label>Название:</label>
+                <input type="text" name="name" value="{{ service.name }}">
+                <label>Заголовок:</label>
+                <select name="title_id">
+                    {% for title in titles %}
+                    <option value="{{ title.id_title }}" {% if title.id_title == service.title_id %}selected{% endif %}>{{ title.name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Норма статьи:</label>
+                <select name="norm_id">
+                    {% for article_norm in article_norms %}
+                    <option value="{{ article_norm.id_norm }}" {% if article_norm.id_norm == service.norm_id %}selected{% endif %}>{{ article_norm.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Изменить</button>
+            </form>
+            <form method="post">
+                <input type="hidden" name="form_type" value="delete_service">
+                <input type="hidden" name="id" value="{{ service.id_service }}">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
         {% endfor %}
-    </select>
-    <button type="submit">Добавить</button>
-</form>
+    </ul>
+    <form method="post">
+        <input type="hidden" name="form_type" value="add_service">
+        <label>Добавить сервис:</label>
+        <input type="text" name="name">
+        <label>Заголовок:</label>
+        <select name="title_id">
+            {% for title in titles %}
+            <option value="{{ title.id_title }}">{{ title.name }}</option>
+            {% endfor %}
+        </select>
+        <label>Норма статьи:</label>
+        <select name="norm_id">
+            {% for article_norm in article_norms %}
+            <option value="{{ article_norm.id_norm }}">{{ article_norm.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Добавить</button>
+    </form>
 
-<ul>
-    {% for tariff in tariffs %}
-    <li>
-        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="edit_tariff">
-            <input type="hidden" name="id" value="{{ tariff.id_price }}">
-            <input type="number" name="price" value="{{ tariff.price }}" required>
-            <input type="text" name="description" value="{{ tariff.description }}">
-            <select name="tariff_type_id">
-                {% for tariff_type in tariff_types %}
-                <option value="{{ tariff_type.id_tariff_types }}" {% if tariff_type.id_tariff_types == tariff.tariff_type_id %}selected{% endif %}>{{ tariff_type.name }}</option>
-                {% endfor %}
-            </select>
-            <select name="service_id">
-                {% for service in services %}
-                <option value="{{ service.id_service }}" {% if service.id_service == tariff.service_id %}selected{% endif %}>{{ service.name }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit">Сохранить</button>
-        </form>
-        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="delete_tariff">
-            <input type="hidden" name="id" value="{{ tariff.id_price }}">
-            <button type="submit">Удалить</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
-
-<h2>Управление заголовками</h2>
-<form method="POST" action="{{ url_for('admin_tariffs') }}">
-    <input type="hidden" name="form_type" value="add_title">
-    <label for="name">Название заголовка:</label>
-    <input type="text" id="name" name="name" required>
-    <button type="submit">Добавить</button>
-</form>
-
-<ul>
-    {% for title in titles %}
-    <li>
-        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="edit_title">
-            <input type="hidden" name="id" value="{{ title.id_title }}">
-            <input type="text" name="name" value="{{ title.name }}" required>
-            <button type="submit">Сохранить</button>
-        </form>
-        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="delete_title">
-            <input type="hidden" name="id" value="{{ title.id_title }}">
-            <button type="submit">Удалить</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
-
-<h2>Управление нормами статей</h2>
-<form method="POST" action="{{ url_for('admin_tariffs') }}">
-    <input type="hidden" name="form_type" value="add_article_norm">
-    <label for="name">Название нормы статьи:</label>
-    <input type="text" id="name" name="name" required>
-    <button type="submit">Добавить</button>
-</form>
-
-<ul>
-    {% for article_norm in article_norms %}
-    <li>
-        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="edit_article_norm">
-            <input type="hidden" name="id" value="{{ article_norm.id_norm }}">
-            <input type="text" name="name" value="{{ article_norm.name }}" required>
-            <button type="submit">Сохранить</button>
-        </form>
-        <form method="POST" action="{{ url_for('admin_tariffs') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="delete_article_norm">
-            <input type="hidden" name="id" value="{{ article_norm.id_norm }}">
-            <button type="submit">Удалить</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
-
-{% endblock %}
+    <h2>Тарифы</h2>
+    <ul>
+        {% for tariff in tariffs %}
+        <li>
+            <form method="post">
+                <input type="hidden" name="form_type" value="edit_tariff">
+                <input type="hidden" name="id" value="{{ tariff.id_price }}">
+                <label>Цена:</label>
+                <input type="number" name="price" value="{{ tariff.price }}">
+                <label>Описание:</label>
+                <input type="text" name="description" value="{{ tariff.description }}">
+                <label>Тип тарифа:</label>
+                <select name="tariff_type_id">
+                    {% for tariff_type in tariff_types %}
+                    <option value="{{ tariff_type.id_tariff_types }}" {% if tariff_type.id_tariff_types == tariff.tariff_type_id %}selected{% endif %}>{{ tariff_type.name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Сервис:</label>
+                <select name="service_id">
+                    {% for service in services %}
+                    <option value="{{ service.id_service }}" {% if service.id_service == tariff.id_service %}selected{% endif %}>{{ service.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Изменить</button>
+            </form>
+            <form method="post">
+                <input type="hidden" name="form_type" value="delete_tariff">
+                <input type="hidden" name="id" value="{{ tariff.id_price }}">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <form method="post">
+        <input type="hidden" name="form_type" value="add_tariff">
+        <label>Добавить тариф:</label>
+        <input type="number" name="price">
+        <label>Описание:</label>
+        <input type="text" name="description">
+        <label>Тип тарифа:</label>
+        <select name="tariff_type_id">
+            {% for tariff_type in tariff_types %}
+            <option value="{{ tariff_type.id_tariff_types }}">{{ tariff_type.name }}</option>
+            {% endfor %}
+        </select>
+        <label>Сервис:</label>
+        <select name="service_id">
+            {% for service in services %}
+            <option value="{{ service.id_service }}">{{ service.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>

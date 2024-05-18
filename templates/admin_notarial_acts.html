@@ -1,74 +1,77 @@
-{% extends 'base.html' %}
-
-{% block title %}Административный кабинет - Нотариальные действия{% endblock %}
-
-{% block content %}
-<h1>Административный кабинет - Нотариальные действия</h1>
-
-<h2>Управление категориями</h2>
-<form method="POST" action="{{ url_for('admin_notarial_acts') }}">
-    <input type="hidden" name="form_type" value="add_category">
-    <label for="name">Название категории:</label>
-    <input type="text" id="name" name="name" required>
-    <button type="submit">Добавить</button>
-</form>
-
-<ul>
-    {% for category in categories %}
-    <li>
-        <form method="POST" action="{{ url_for('admin_notarial_acts') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="edit_category">
-            <input type="hidden" name="id" value="{{ category.id }}">
-            <input type="text" name="name" value="{{ category.name }}" required>
-            <button type="submit">Сохранить</button>
-        </form>
-        <form method="POST" action="{{ url_for('admin_notarial_acts') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="delete_category">
-            <input type="hidden" name="id" value="{{ category.id }}">
-            <button type="submit">Удалить</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
-
-<h2>Управление действиями</h2>
-<form method="POST" action="{{ url_for('admin_notarial_acts') }}">
-    <input type="hidden" name="form_type" value="add_action">
-    <label for="name">Название действия:</label>
-    <input type="text" id="name" name="name" required>
-    <label for="description">Описание:</label>
-    <input type="text" id="description" name="description">
-    <label for="category_id">Категория:</label>
-    <select id="category_id" name="category_id">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление нотариальными действиями</title>
+</head>
+<body>
+    <h1>Управление нотариальными действиями</h1>
+    <h2>Категории</h2>
+    <ul>
         {% for category in categories %}
-        <option value="{{ category.id }}">{{ category.name }}</option>
+        <li>
+            <form method="post">
+                <input type="hidden" name="form_type" value="edit_category">
+                <input type="hidden" name="id" value="{{ category.id }}">
+                <label>Название:</label>
+                <input type="text" name="name" value="{{ category.name }}">
+                <button type="submit">Изменить</button>
+            </form>
+            <form method="post">
+                <input type="hidden" name="form_type" value="delete_category">
+                <input type="hidden" name="id" value="{{ category.id }}">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
         {% endfor %}
-    </select>
-    <button type="submit">Добавить</button>
-</form>
+    </ul>
+    <form method="post">
+        <input type="hidden" name="form_type" value="add_category">
+        <label>Добавить категорию:</label>
+        <input type="text" name="name">
+        <button type="submit">Добавить</button>
+    </form>
 
-<ul>
-    {% for action in actions %}
-    <li>
-        <form method="POST" action="{{ url_for('admin_notarial_acts') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="edit_action">
-            <input type="hidden" name="id" value="{{ action.id }}">
-            <input type="text" name="name" value="{{ action.name }}" required>
-            <input type="text" name="description" value="{{ action.description }}">
-            <select name="category_id">
-                {% for category in categories %}
-                <option value="{{ category.id }}" {% if category.id == action.category_id %}selected{% endif %}>{{ category.name }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit">Сохранить</button>
-        </form>
-        <form method="POST" action="{{ url_for('admin_notarial_acts') }}" style="display:inline;">
-            <input type="hidden" name="form_type" value="delete_action">
-            <input type="hidden" name="id" value="{{ action.id }}">
-            <button type="submit">Удалить</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
-
-{% endblock %}
+    <h2>Действия</h2>
+    <ul>
+        {% for action in actions %}
+        <li>
+            <form method="post">
+                <input type="hidden" name="form_type" value="edit_action">
+                <input type="hidden" name="id" value="{{ action.id }}">
+                <label>Категория:</label>
+                <select name="category_id">
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" {% if category.id == action.category_id %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Название:</label>
+                <input type="text" name="name" value="{{ action.name }}">
+                <label>Описание:</label>
+                <input type="text" name="description" value="{{ action.description }}">
+                <button type="submit">Изменить</button>
+            </form>
+            <form method="post">
+                <input type="hidden" name="form_type" value="delete_action">
+                <input type="hidden" name="id" value="{{ action.id }}">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <form method="post">
+        <input type="hidden" name="form_type" value="add_action">
+        <label>Добавить действие:</label>
+        <select name="category_id">
+            {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        <label>Название:</label>
+        <input type="text" name="name">
+        <label>Описание:</label>
+        <input type="text" name="description">
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>
