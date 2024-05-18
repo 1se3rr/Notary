@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
+# Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notarial_acts.db'
 app.config['SQLALCHEMY_BINDS'] = {
     'tariffs': 'sqlite:///tariffs.db'
@@ -11,6 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
+# Models
 class Category(db.Model):
     __tablename__ = 'categories'
     id = db.Column(db.Integer, primary_key=True)
@@ -75,179 +77,183 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/notarial_acts')
-def notarial_acts():
-    categories = Category.query.all()
-    categories_data = [{
-        'id': category.id,
-        'name': category.name,
-        'actions': [{'name': action.name, 'description': action.description} for action in category.actions]
-    } for category in categories]
-    return render_template('notarial_acts.html', categories=categories_data)
+@app.route('/admin/tariffs', methods=['GET', 'POST'])
+def admin_tariffs():
+    if request.method == 'POST':
+        form_type = request.form.get("form_type")
+        if form_type == "add_tariff":
+            price = request.form.get("price")
+            description = request.form.get("description")
+            tariff_type_id = request.form.get("tariff_type_id")
+            service_id = request.form.get("service_id")
+            new_tariff = TariffPrice(price=price, description=description, tariff_type_id=tariff_type_id, id_service=service_id)
+            db.session.add(new_tariff)
+            db.session.commit()
+        elif form_type == "edit_tariff":
+            id = request.form.get("id")
+            price = request.form.get("price")
+            description = request.form.get("description")
+            tariff_type_id = request.form.get("tariff_type_id")
+            service_id = request.form.get("service_id")
+            tariff = db.session.get(TariffPrice, id)
+            if tariff:
+                tariff.price = price
+                tariff.description = description
+                tariff.tariff_type_id = tariff_type_id
+                tariff.id_service = service_id
+                db.session.commit()
+        elif form_type == "delete_tariff":
+            id = request.form.get("id")
+            tariff = db.session.get(TariffPrice, id)
+            if tariff:
+                db.session.delete(tariff)
+                db.session.commit()
+        elif form_type == "add_title":
+            name = request.form.get("name")
+            new_title = Title(name=name)
+            db.session.add(new_title)
+            db.session.commit()
+        elif form_type == "edit_title":
+            id = request.form.get("id")
+            name = request.form.get("name")
+            title = db.session.get(Title, id)
+            if title:
+                title.name = name
+                db.session.commit()
+        elif form_type == "delete_title":
+            id = request.form.get("id")
+            title = db.session.get(Title, id)
+            if title:
+                db.session.delete(title)
+                db.session.commit()
+        elif form_type == "add_article_norm":
+            name = request.form.get("name")
+            new_article_norm = ArticleNorm(name=name)
+            db.session.add(new_article_norm)
+            db.session.commit()
+        elif form_type == "edit_article_norm":
+            id = request.form.get("id")
+            name = request.form.get("name")
+            article_norm = db.session.get(ArticleNorm, id)
+            if article_norm:
+                article_norm.name = name
+                db.session.commit()
+        elif form_type == "delete_article_norm":
+            id = request.form.get("id")
+            article_norm = db.session.get(ArticleNorm, id)
+            if article_norm:
+                db.session.delete(article_norm)
+                db.session.commit()
+        elif form_type == "add_service":
+            name = request.form.get("name")
+            title_id = request.form.get("title_id")
+            norm_id = request.form.get("norm_id")
+            new_service = Service(name=name, title_id=title_id, norm_id=norm_id)
+            db.session.add(new_service)
+            db.session.commit()
+        elif form_type == "edit_service":
+            id = request.form.get("id")
+            name = request.form.get("name")
+            title_id = request.form.get("title_id")
+            norm_id = request.form.get("norm_id")
+            service = db.session.get(Service, id)
+            if service:
+                service.name = name
+                service.title_id = title_id
+                service.norm_id = norm_id
+                db.session.commit()
+        elif form_type == "delete_service":
+            id = request.form.get("id")
+            service = db.session.get(Service, id)
+            if service:
+                db.session.delete(service)
+                db.session.commit()
+        elif form_type == "add_tariff_type":
+            name = request.form.get("name")
+            new_tariff_type = TariffType(name=name)
+            db.session.add(new_tariff_type)
+            db.session.commit()
+        elif form_type == "edit_tariff_type":
+            id = request.form.get("id")
+            name = request.form.get("name")
+            tariff_type = db.session.get(TariffType, id)
+            if tariff_type:
+                tariff_type.name = name
+                db.session.commit()
+        elif form_type == "delete_tariff_type":
+            id = request.form.get("id")
+            tariff_type = db.session.get(TariffType, id)
+            if tariff_type:
+                db.session.delete(tariff_type)
+                db.session.commit()
 
-
-@app.route('/api/categories')
-def categories_api():
-    categories = Category.query.all()
-    categories_data = [{
-        'id': category.id,
-        'name': category.name,
-        'actions': [{'name': action.name, 'description': action.description} for action in category.actions]
-    } for category in categories]
-    return jsonify(categories_data)
-
-
-@app.route('/api/tariffs')
-def tariffs_api():
+    tariffs = TariffPrice.query.all()
     titles = Title.query.all()
-    tariffs_data = [{
-        'title': title.name,
-        'services': [{
-            'name': service.name,
-            'norm': service.article_norm.name if service.article_norm else '',
-            'tariffs': [{
-                'type': price.tariff_type.name,
-                'price': price.price,
-                'description': price.description
-            } for price in service.tariff_prices]
-        } for service in title.services]
-    } for title in titles]
-    return jsonify(tariffs_data)
+    article_norms = ArticleNorm.query.all()
+    services = Service.query.all()
+    tariff_types = TariffType.query.all()
 
-
-@app.route("/tariffs")
-def tariffs():
-    return render_template('tariffs.html')
-
-
-@app.route("/about_us")
-def about_us():
-    return render_template('about_us.html')
-
-
-@app.route("/contact_us")
-def contact_us():
-    return render_template('contact_us.html')
-
-
-@app.route("/FAQ")
-def FAQ():
-    return render_template('FAQ.html')
+    return render_template('admin_tariffs.html', tariffs=tariffs, titles=titles, article_norms=article_norms, services=services, tariff_types=tariff_types)
 
 
 @app.route('/admin/notarial_acts', methods=['GET', 'POST'])
 def admin_notarial_acts():
-    categories = Category.query.all()
-    actions = Action.query.all()
-
     if request.method == 'POST':
-        form_type = request.form['form_type']
-        if form_type == 'add_category':
-            name = request.form['name']
+        form_type = request.form.get("form_type")
+        if form_type == "add_category":
+            name = request.form.get("name")
             new_category = Category(name=name)
             db.session.add(new_category)
             db.session.commit()
-        elif form_type == 'edit_category':
-            id = request.form['id']
-            category = Category.query.get_or_404(id)
-            category.name = request.form['name']
-            db.session.commit()
-        elif form_type == 'delete_category':
-            id = request.form['id']
-            category = Category.query.get_or_404(id)
-            db.session.delete(category)
-            db.session.commit()
-        elif form_type == 'add_action':
-            name = request.form['name']
-            description = request.form['description']
-            category_id = request.form['category_id']
-            new_action = Action(name=name, description=description, category_id=category_id)
+        elif form_type == "edit_category":
+            id = request.form.get("id")
+            name = request.form.get("name")
+            category = db.session.get(Category, id)
+            if category:
+                category.name = name
+                db.session.commit()
+        elif form_type == "delete_category":
+            id = request.form.get("id")
+            category = db.session.get(Category, id)
+            if category:
+                db.session.delete(category)
+                db.session.commit()
+        elif form_type == "add_action":
+            category_id = request.form.get("category_id")
+            name = request.form.get("name")
+            description = request.form.get("description")
+            new_action = Action(category_id=category_id, name=name, description=description)
             db.session.add(new_action)
             db.session.commit()
-        elif form_type == 'edit_action':
-            id = request.form['id']
-            action = Action.query.get_or_404(id)
-            action.name = request.form['name']
-            action.description = request.form['description']
-            action.category_id = request.form['category_id']
-            db.session.commit()
-        elif form_type == 'delete_action':
-            id = request.form['id']
-            action = Action.query.get_or_404(id)
-            db.session.delete(action)
-            db.session.commit()
-        return redirect(url_for('admin_notarial_acts'))
+        elif form_type == "edit_action":
+            id = request.form.get("id")
+            category_id = request.form.get("category_id")
+            name = request.form.get("name")
+            description = request.form.get("description")
+            action = db.session.get(Action, id)
+            if action:
+                action.category_id = category_id
+                action.name = name
+                action.description = description
+                db.session.commit()
+        elif form_type == "delete_action":
+            id = request.form.get("id")
+            action = db.session.get(Action, id)
+            if action:
+                db.session.delete(action)
+                db.session.commit()
+
+    categories = Category.query.all()
+    actions = Action.query.all()
     return render_template('admin_notarial_acts.html', categories=categories, actions=actions)
 
 
-@app.route('/admin/tariffs', methods=['GET', 'POST'])
-def admin_tariffs():
-    tariffs = TariffPrice.query.all()
-    tariff_types = TariffType.query.all()
-    services = Service.query.all()
-    article_norms = ArticleNorm.query.all()
-    titles = Title.query.all()
-
-    if request.method == 'POST':
-        form_type = request.form['form_type']
-        if form_type == 'add_tariff':
-            price = request.form['price']
-            description = request.form['description']
-            tariff_type_id = request.form['tariff_type_id']
-            service_id = request.form['service_id']
-            new_tariff = TariffPrice(price=price, description=description, tariff_type_id=tariff_type_id,
-                                     service_id=service_id)
-            db.session.add(new_tariff)
-            db.session.commit()
-        elif form_type == 'edit_tariff':
-            id = request.form['id']
-            tariff = TariffPrice.query.get_or_404(id)
-            tariff.price = request.form['price']
-            tariff.description = request.form['description']
-            tariff.tariff_type_id = request.form['tariff_type_id']
-            tariff.service_id = request.form['service_id']
-            db.session.commit()
-        elif form_type == 'delete_tariff':
-            id = request.form['id']
-            tariff = TariffPrice.query.get_or_404(id)
-            db.session.delete(tariff)
-            db.session.commit()
-        elif form_type == 'add_article_norm':
-            name = request.form['name']
-            new_article_norm = ArticleNorm(name=name)
-            db.session.add(new_article_norm)
-            db.session.commit()
-        elif form_type == 'edit_article_norm':
-            id = request.form['id']
-            article_norm = ArticleNorm.query.get_or_404(id)
-            article_norm.name = request.form['name']
-            db.session.commit()
-        elif form_type == 'delete_article_norm':
-            id = request.form['id']
-            article_norm = ArticleNorm.query.get_or_404(id)
-            db.session.delete(article_norm)
-            db.session.commit()
-        elif form_type == 'add_title':
-            name = request.form['name']
-            new_title = Title(name=name)
-            db.session.add(new_title)
-            db.session.commit()
-        elif form_type == 'edit_title':
-            id = request.form['id']
-            title = Title.query.get_or_404(id)
-            title.name = request.form['name']
-            db.session.commit()
-        elif form_type == 'delete_title':
-            id = request.form['id']
-            title = Title.query.get_or_404(id)
-            db.session.delete(title)
-            db.session.commit()
-        return redirect(url_for('admin_tariffs'))
-    return render_template('admin_tariffs.html', tariffs=tariffs, tariff_types=tariff_types, services=services,
-                           article_norms=article_norms, titles=titles)
+@app.route('/admin', methods=['GET'])
+def admin():
+    return render_template('admin.html')
 
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()  # Создать все таблицы базы данных в контексте приложения
+        db.create_all()
     app.run(debug=True)
