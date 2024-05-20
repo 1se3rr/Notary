@@ -89,3 +89,37 @@
     height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
     border-width: 0 5px 5px 0; /* Толщина линии только снизу и справа */
 }
+
+.yandex {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Отступ снизу для отделения от других секций */
+}
+
+.map-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; /* Соотношение сторон 16:9 для iframe */
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.map-link {
+    color: #eee;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+}
+
+.map-link:last-of-type {
+    top: 14px;
+}

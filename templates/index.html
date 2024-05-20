@@ -13,7 +13,7 @@
 <section class="name-and-logo">
     <h1 class="notary-name">Нотариус Бармина Татьяна Юрьевна</h1>
     <figure class="notary-logo">
-        <img src="../static/img/logo.jpg" alt="Логотип нотариуса Бармина Татьяна Юрьевна">
+        <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Логотип нотариуса Бармина Татьяна Юрьевна">
         <figcaption class="sr-only">Логотип нотариальной конторы</figcaption>
     </figure>
 </section>
@@ -21,13 +21,14 @@
 <section class="about">
     <h2 class="sr-only">О нашей конторе</h2>
     <p class="description">Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна
-        <button class="overlay-button">Подробнее</button>
+        <button onclick="window.location.href='{{ url_for('about_us') }}'" class="overlay-button" aria-label="Подробнее о нотариусе Бармина Татьяна Юрьевна">Подробнее</button>
+
     </p>
     <time class="working-hours">
         <!-- Добавьте сюда время работы или оставьте пустым для дальнейшего наполнения -->
     </time>
     <p class="license-number">Лицензия №98 выдана 23 декабря 2014 года Управлением Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу
-        <button class="overlay-button">Подробнее</button>
+        <button onclick="location.href='https://drive.google.com/file/d/10jo093lVcA8VDz_hW7LGkW27fxfx0vTz/preview'" class="overlay-button"  allow="autoplay">Подробнее</button>
     </p>
 </section>
 
@@ -39,16 +40,13 @@
     <article class="article">
         <p>Нотариус совершает все виды нотариальных действий в соответствии со ст. 35 «Основ законодательства Российской Федерации о нотариате».</p>
     </article>
-   <section class="actions-section">
-    <div class="categories-container">
-        <ul class="actions-list" id="categories-list-left"></ul>
-        <ul class="actions-list" id="categories-list-right"></ul>
-    </div>
-    <button class="overlay-button">Подробнее</button>
-</section>
-    <button class="view-article-button">
-        <!-- Ссылка на полную статью -->
-    </button>
+    <section class="actions-section">
+        <div class="categories-container">
+            <ul class="actions-list" id="categories-list-left"></ul>
+            <ul class="actions-list" id="categories-list-right"></ul>
+        </div>
+        <button onclick="window.location.href='{{ url_for('notarial_acts') }}'" class="overlay-button" aria-label="Подробнее о нотприальных действиях">Подробнее</button>
+    </section>
     <aside class="text-related-to-notary">
         <p>Нотариат в РФ призван обеспечивать в соответствии с Конституцией РФ, конституциями (уставами) субъектов РФ, настоящими Основами защиту прав и законных интересов граждан и юридических лиц путем совершения нотариусами предусмотренных законодательными актами нотариальных действий от имени РФ.</p>
     </aside>
@@ -59,37 +57,33 @@
     <header class="section-title">
         <h3>Тарифы на услуги</h3>
     </header>
-    <section class="tariffs">
-            <ul id="tariffs-list">
-                <!-- Тарифы будут добавлены с помощью JavaScript -->
-            </ul>
-            <button class="overlay-button">Подробнее</button>
+    <section class="tariffs-section">
+        <ul id="titles-list-left" style="list-style-type: none;"></ul>
+    <ul id="titles-list-right" style="list-style-type: none;"></ul>
+    <button onclick="window.location.href='{{ url_for('tariffs') }}'" class="overlay-button" aria-label="Подробнее о тарифах">Подробнее</button>
     </section>
     <article class="text-related-to-tariffs">
         <p>За совершение нотариальных действий нотариус, занимающийся частной практикой, взимает единый нотариальный тариф (далее - нотариальный тариф), включающий федеральный и региональный тарифы.</p>
     </article>
     <div class="faq-link">
         <p>Есть вопросы? Посмотрите раздел FAQ</p>
-        <button class="faq-button"></button>
+        <button onclick="window.location.href='{{ url_for('FAQ') }}'" class="faq-button" aria-label="Открыть раздел FAQ"></button>
     </div>
     <div class="gos-link">
         <p>Запишитесь на прием через госуслуги</p>
-        <button class="gos-button"></button>
+        <button  onclick="location.href='https://www.gosuslugi.ru/600771/1/form'"class="gos-button" aria-label="Записаться на прием через госуслуги"></button>
     </div>
 </section>
 
-    <section class="yandex">
+<section class="yandex">
     <div class="map-container">
         <a href="https://yandex.ru/maps/org/notarius_barmina_t_yu_/23612161319/?utm_medium=mapframe&utm_source=maps" class="map-link">Нотариус Бармина Т. Ю.</a>
         <a href="https://yandex.ru/maps/11230/noviy-urengoy/category/notaries/184105624/?utm_medium=mapframe&utm_source=maps" class="map-link">Нотариусы в Новом Уренгое</a>
-        <iframe src="https://yandex.ru/map-widget/v1/org/notarius_barmina_t_yu_/23612161319/?ll=76.670482%2C66.081448&z=17"  frameborder="1" allowfullscreen="true" class="map-frame"></iframe>
+        <iframe src="https://yandex.ru/map-widget/v1/org/notarius_barmina_t_yu_/23612161319/?ll=76.670482%2C66.081448&z=17" frameborder="1" allowfullscreen="true" class="map-frame" aria-label="Карта местоположения нотариуса"></iframe>
     </div>
-
     <div class="reviews-container">
-        <iframe class="reviews-frame" src="https://yandex.ru/maps-reviews-widget/23612161319?comments"></iframe>
+        <iframe class="reviews-frame" src="https://yandex.ru/maps-reviews-widget/23612161319?comments" aria-label="Отзывы клиентов"></iframe>
         <a href="https://yandex.ru/maps/org/notarius_barmina_t_yu_/23612161319/" target="_blank" class="reviews-link">Нотариус Бармина Т. Ю. на карте Нового Уренгоя — Яндекс Карты</a>
     </div>
 </section>
-
-
 {% endblock %}

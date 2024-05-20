@@ -1,47 +1,74 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
+    // Функция для обновления размеров шрифтов
     function updateFontSizes() {
         const isMobile = window.innerWidth < 768;
+        const elements = [
+            { selector: 'h1', mobileSize: '24px', desktopSize: '48px' },
+            { selector: 'h2', mobileSize: '20px', desktopSize: '32px' }
+        ];
 
-        // Изменение размера шрифта для всех элементов h1
-        const h1s = document.querySelectorAll("h1");
-        h1s.forEach(h1 => {
-            h1.style.fontSize = isMobile ? "24px" : "48px";
-        });
-
-        // Изменение размера шрифта для всех элементов h2
-        const h2s = document.querySelectorAll("h2");
-        h2s.forEach(h2 => {
-            h2.style.fontSize = isMobile ? "20px" : "32px";
+        elements.forEach(element => {
+            document.querySelectorAll(element.selector).forEach(el => {
+                el.style.fontSize = isMobile ? element.mobileSize : element.desktopSize;
+            });
         });
     }
 
-    // Вызов функции при загрузке страницы
+    // Функция для загрузки категорий
+    function loadCategories() {
+        fetch('/api/categories')
+            .then(response => response.json())
+            .then(categories => {
+                const categoriesListLeft = document.getElementById('categories-list-left');
+                const categoriesListRight = document.getElementById('categories-list-right');
+                categories.forEach((category, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<img src="static/img/point.png" alt="Category Image"> ${category.name}`;
+                    if (index % 2 === 0) {  // Распределение категорий по колонкам
+                        categoriesListLeft.appendChild(listItem);
+                    } else {
+                        categoriesListRight.appendChild(listItem);
+                    }
+                });
+            })
+            .catch(error => console.error('Ошибка загрузки категорий:', error));
+    }
+
+    // Вызов функций при загрузке страницы
     updateFontSizes();
+    loadCategories();
 
     // Добавление обработчика изменения размера окна
-    window.addEventListener("resize", updateFontSizes);
+    window.addEventListener('resize', updateFontSizes);
 });
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('/api/categories')
+    fetch('/api/tariffs')
         .then(response => response.json())
-        .then(categories => {
-            const categoriesListLeft = document.getElementById('categories-list-left');
-            const categoriesListRight = document.getElementById('categories-list-right');
-            categories.forEach((category, index) => {
+        .then(data => {
+            const titlesListLeft = document.getElementById('titles-list-left');
+            const titlesListRight = document.getElementById('titles-list-right');
+            data.forEach((title, index) => {
                 const listItem = document.createElement('li');
-                listItem.innerHTML = `<img src="static/img/point.png" alt="Category Image"> ${category.name}`;
-                if (index % 2 === 0) {  // Распределение категорий по колонкам
-                    categoriesListLeft.appendChild(listItem);
+
+                const image = document.createElement('img');
+                image.src = 'static/img/point.png';
+                image.alt = 'Category Image';
+
+                const text = document.createTextNode(` ${title.title}`);
+
+                listItem.appendChild(image);
+                listItem.appendChild(text);
+
+                if (index % 2 === 0) {
+                    titlesListLeft.appendChild(listItem);
                 } else {
-                    categoriesListRight.appendChild(listItem);
+                    titlesListRight.appendChild(listItem);
                 }
             });
         })
-        .catch(error => console.error('Ошибка загрузки категорий:', error));
+        .catch(error => console.error('Ошибка загрузки данных заголовков:', error));
 });
-
-
-
+;
 

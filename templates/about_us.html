@@ -2,7 +2,6 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/about_us.css') }}">
-
 {% endblock %}
 
 {% block title %}
@@ -11,24 +10,22 @@
 
 {% block content %}
 
-    <section class="about">
-     <h2 class="sr-only">О нашей конторе</h2>
-        <p class="description">Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна</p>
+<section class="about">
+    <h2 class="sr-only">О нашей конторе</h2>
+    <p class="description">Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна</p>
 
-        <time class="working-hours">
+    <time class="working-hours">
         <!-- Добавьте сюда время работы или оставьте пустым для дальнейшего наполнения -->
-        </time>
+    </time>
 
-        <p class="license-number">Приказ о назначении № 6 от 02 февраля 2021 года Управления Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу</p>
-    </section>
+    <p class="license-number">Приказ о назначении № 6 от 02 февраля 2021 года Управления Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу</p>
+</section>
 
-
-     <section class="certificates-section">
-        <iframe src="https://drive.google.com/file/d/1r72UObxN_UPNWpOZtirbMmLtYRkd2PIZ/preview"  allow="autoplay"></iframe>
-        <iframe src="https://drive.google.com/file/d/12J7kzBoWKZL5oJVUB7dKgbFjk_N2bS7J/preview"  allow="autoplay"></iframe>
-        <iframe src="https://drive.google.com/file/d/10jo093lVcA8VDz_hW7LGkW27fxfx0vTz/preview"  allow="autoplay"></iframe>
-    </section>
-
-
+<section class="certificates-section">
+    <h2 class="sr-only">Сертификаты и лицензии</h2>
+    <iframe src="https://drive.google.com/file/d/1r72UObxN_UPNWpOZtirbMmLtYRkd2PIZ/preview" allow="autoplay" title="Сертификат 1"></iframe>
+    <iframe src="https://drive.google.com/file/d/12J7kzBoWKZL5oJVUB7dKgbFjk_N2bS7J/preview" allow="autoplay" title="Сертификат 2"></iframe>
+    <iframe src="https://drive.google.com/file/d/10jo093lVcA8VDz_hW7LGkW27fxfx0vTz/preview" allow="autoplay" title="Сертификат 3"></iframe>
+</section>
 
 {% endblock %}

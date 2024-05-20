@@ -2,7 +2,6 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/notarial_acts.css') }}">
-
 {% endblock %}
 
 {% block title %}
@@ -11,24 +10,18 @@
 
 {% block content %}
 
-
 <section class="notary-info">
     <h1 class="sr-only">Нотариальные действия нашей конторы</h1>
-
-
-
 
     <section class="notary-description">
         <h2 class="sr-only">Описание нотариальной конторы</h2>
         <p>Наша нотариальная контора совершает все виды нотариальных действий, предусмотренных действующим законодательством.</p>
     </section>
 
-
-  <figure class="notary-photo">
+    <figure class="notary-photo">
         <img src="" alt="Фотография нотариальной конторы">
         <figcaption>Нотариальная контора</figcaption>
     </figure>
-
 
     <section class="notary-services">
         <h2 class="sr-only">Список нотариальных услуг</h2>
@@ -37,7 +30,7 @@
 
     <section class="notary-article-link">
         <h2 class="sr-only">Основы законодательства о нотариате</h2>
-        <p> <a href="URL-статьи">ст. 35 «Основ законодательства Российской Федерации о нотариате»</a>.</p>
+        <p><a href="URL-статьи">ст. 35 «Основ законодательства Российской Федерации о нотариате»</a>.</p>
     </section>
 
     <aside class="faq-section">
@@ -45,29 +38,16 @@
         <p>Запишитесь на прием через госуслуги</p>
         <button class="faq-button"></button>
     </aside>
-
-
-
-
 </section>
 
-
-
- <section class="category-tabs">
-        {% for category in categories %}
-        <div class="category-tab" data-category-id="{{ category.id }}">
-            {{ category.name }} ({{ category.actions|length }})
-        </div>
-        {% endfor %}
-
-<div id="actions-list" class="actions-list"></div>
-    </section>
-
-
-
-
-
-
+<section class="category-tabs">
+    {% for category in categories %}
+    <div class="category-tab" data-category-id="{{ category.id }}">
+        {{ category.name }} ({{ category.actions|length }})
+    </div>
+    {% endfor %}
+    <div id="actions-list" class="actions-list"></div>
+</section>
 
 {% endblock %}
 
