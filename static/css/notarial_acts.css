@@ -1,4 +1,4 @@
-.notary-info{
+.notary-info {
     width: 100%;
     display: grid;
     grid-template-columns: 35% 35% 30%;
@@ -7,41 +7,43 @@
 
 .notary-description {
     grid-column: span 2;
-    width: calc(100% - 30px);
+    width: calc(100% - 1.875rem); /* 30px */
     position: relative;
-    min-height: 108px;
-    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
-    display: flex; /* Использование flexbox для центрирования содержимого */
-    align-items: center; /* Центрирование по вертикали */
-    text-align: justify; /* Выравнивание по левому краю внутри flex-контейнера */
-    font-size: 18px; /* Размер шрифта */
-    box-sizing: border-box; /* Учитывает отступы в общий размер */
-    margin-bottom: 30px;
+    min-height: 6.75rem; /* 108px */
+    padding: 0.9375rem; /* 15px */
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    font-size: 1.125rem; /* 18px */
+    box-sizing: border-box;
+    margin-bottom: 1.875rem; /* 30px */
 }
 
 .notary-description::before,
-.notary-description:after {
-    content: ""; /* Необходимо для отображения псевдоэлементов */
-    position: absolute; /* Абсолютное позиционирование относительно .article */
-    border-style: solid; /* Стиль границы */
-    border-color:  #7E162E;; /* Цвет границы */
+.notary-description::after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-color: #7E162E;
 }
 
-.notary-description:before {
-    top: 0; left: 0; /* Позиционирование в левом верхнем углу */
-    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
-    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
-    border-width: 5px 0 0 5px; /* Толщина линии только сверху и слева */
+.notary-description::before {
+    top: 0;
+    left: 0;
+    width: calc(60%);
+    height: calc(60%);
+    border-width: 0.3125rem 0 0 0.3125rem; /* 5px */
 }
 
-.notary-description:after {
-    bottom: 0; right: 0; /* Позиционирование в правом нижнем углу */
-    width: calc(60%); /* Ширина линии рамки, 60% от ширины блока */
-    height: calc(60%); /* Высота линии рамки, 60% от высоты блока */
-    border-width: 0 5px 5px 0; /* Толщина линии только снизу и справа */
+.notary-description::after {
+    bottom: 0;
+    right: 0;
+    width: calc(60%);
+    height: calc(60%);
+    border-width: 0 0.3125rem 0.3125rem 0; /* 5px */
 }
 
-.notary-photo{
+.notary-photo {
     grid-row: span 3;
     width: 100%;
     height: auto;
@@ -49,111 +51,96 @@
     overflow: hidden;
     margin: 0;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 0.625rem; /* 10px */
     background-color: #7E162E;
-    /*background:  center center no-repeat; /* Сокращенный синтаксис для фона */
     background-size: cover;
-
 }
 
-.notary-services{
+.notary-services {
     grid-column: span 2;
     position: relative;
-    width: calc(100% - 30px);
+    width: calc(100% - 1.875rem); /* 30px */
     min-height: auto;
-    /* padding-left: 15px; */
-    /* padding-right: 15px; */
-
-    /* display: flex; */
     align-items: center;
     text-align: justify;
-    font-size: 18px;
-    /* box-sizing: border-box; */
-    margin-bottom: 30px;
+    font-size: 1.125rem; /* 18px */
+    margin-bottom: 1.875rem; /* 30px */
 }
 
- p{
+p {
     margin: 0;
 }
 
-.notary-article-link{
+.notary-article-link {
     position: relative;
-    height: 76px;
-    width: calc(100% - 30px);
-    /* padding: 15px; */
+    height: 4.75rem; /* 76px */
+    width: calc(100% - 1.875rem); /* 30px */
     display: flex;
     align-items: center;
     text-align: justify;
-    font-size: 18px;
-    /* box-sizing: border-box; */
-    margin-bottom: 30px;
+    font-size: 1.125rem; /* 18px */
+    margin-bottom: 1.875rem; /* 30px */
 }
 
 .faq-section {
     position: relative;
     margin: 0;
-    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
-    display: flex; /* Использование flexbox для центрирования содержимого */
-    align-items: center; /* Центрирование по вертикали */
-    justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
-    font-size: 18px; /* Размер шрифта */
-    width: calc(100% - 30px);
-    height: 76px;
+    padding: 0.9375rem; /* 15px */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.125rem; /* 18px */
+    width: calc(100% - 1.875rem); /* 30px */
+    height: 4.75rem; /* 76px */
     background-color: #F2F2F2;
-    border-radius: 10px;
+    border-radius: 0.625rem; /* 10px */
     box-sizing: border-box;
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+    box-shadow: 0.3125rem 0.3125rem 0.625rem rgba(22, 27, 29, 0.25), -0.3125rem -0.3125rem 0.625rem rgba(250, 251, 255, 1); /* 5px 5px 10px */
 }
 
 .faq-button {
     border: none;
-    width: 45px; /* Ширина кнопки */
-    height: 45px; /* Высота кнопки */
-    background-color: #7E162E; /* Цвет фона кнопки */
-    color: white; /* Цвет текста */
-    font-size: 24px; /* Размер шрифта символа */
-    display: flex; /* Использование flexbox для центрирования символа */
-    align-items: center; /* Вертикальное центрирование символа */
-    justify-content: center; /* Горизонтальное центрирование символа */
-    border-radius: 10%; /* Процентное скругление углов */
-    position: absolute; /* Абсолютное позиционирование */
-    right: 0; /* Отступ справа */
-    bottom: 0; /* Отступ снизу */
-    cursor: pointer; /* Курсор в виде указателя для улучшения UX */
+    width: 2.8125rem; /* 45px */
+    height: 2.8125rem; /* 45px */
+    background-color: #7E162E;
+    color: white;
+    font-size: 1.5rem; /* 24px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
 }
 
-/* Добавление символа '>' с использованием псевдо-элемента */
 .faq-button::after {
-    content: '>'; /* Символ '>' */
+    content: '>';
 }
-
-
 
 .category-tabs {
-    width: 100% ;
+    width: 100%;
     height: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 1.875rem; /* 30px */
+    margin-bottom: 1.875rem; /* 30px */
 }
 
 .category-tab {
-    /* margin-right: 5px; */
-    pwidth: 100%;
+    width: calc(100% - 1.875rem) ;
     background-color: #7E162E;
     color: white;
     border: none;
-    padding: 15px 15px;
+    padding: 0.9375rem 0.9375rem; /* 15px 15px */
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
     cursor: pointer;
-    border-radius: 10px;
-
-
+    border-radius: 0.625rem; /* 10px */
 }
 
 .category-tab.active {
@@ -163,22 +150,86 @@
 
 .action-item {
     cursor: pointer;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 5px;
+    padding: 0.625rem; /* 10px */
+    border-bottom: 0.0625rem solid #ccc; /* 1px */
+    margin-bottom: 0.3125rem; /* 5px */
 }
 
 .action-description {
     text-align: justify;
-    padding: 5px;
+    padding: 0.3125rem; /* 5px */
     color: #666;
 }
 
-.actions-list{
+.actions-list {
     grid-column: span 3;
     width: 100%;
 }
 
+@media (max-width: 480px) and (min-width: 320px)  {
+    .notary-info{
+        width: 100%;
+        display: grid;
+       grid-template-columns: 1fr;
+       grid-template-rows: auto;
+
+    }
+
+    .notary-photo{
+        display: none;
+    }
+
+    .notary-description, .notary-services, .notary-article-link, .faq-section{
+        width: 100%;
+        grid-column: span 1;
+    }
+
+    .category-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.875rem; /* 30px */
+        margin-bottom: 1.875rem; /* 30px */
+        height: fit-content ;
+    }
+
+    .category-tab {
+    background-color: #F2F2F2;
+    flex: 1 1 calc(50% - 1.875rem); /* гибкая ширина с минимальной шириной calc(50% - 30px) */
+    height: auto;
+    color: #7E162E;
+    border: none;
+    text-align: start;
+    text-decoration: none;
+    display: flex;
+    font-size: 14px; /* 16px */
+    cursor: pointer;
+    padding: 0; /* 15px */
+    box-sizing: border-box;
+    }
+
+    .faq-section{
+        width: 100%;
+        height: 2.8125rem;
+        font-size: 1rem; /* 16px */
+        padding-left: 15px  ;
+    }
+
+    .action-item {
+    cursor: pointer;
+    padding: 0.625rem; /* 10px */
+    border-bottom: 0.0625rem solid #ccc; /* 1px */
+    margin-bottom: 0.3125rem; /* 5px */
+    }
+
+    .action-description {
+    text-align: justify;
+    padding: 0.3125rem; /* 5px */
+    color: #666;
+    }
+
+    .actions-list {
+    width: 100%;
+    }
 
 
-
+}

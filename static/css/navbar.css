@@ -1,4 +1,3 @@
-
 header nav ul {
     width: 100%; /* Фиксированная ширина */
     height: 60px; /* Фиксированная высота */
@@ -9,7 +8,7 @@ header nav ul {
     align-items: center; /* Центрируем элементы по вертикали */
     justify-content: space-around; /* Равномерно распределяем элементы по горизонтали */
     box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
-     background-color: #F2F2F2;
+    background-color: #F2F2F2;
     border-radius: 10px; /* Скругление углов */
 }
 
@@ -17,13 +16,13 @@ header nav ul {
 header nav li a {
     text-decoration: none; /* Убираем подчеркивание текста */
     color: #161B1D; /* Цвет текста ссылок */
-    font-size: 16px; /* Размер шрифта */
+    font-size: 1rem; /* Размер шрифта в rem для гибкости */
     font-weight: bold; /* Жирный шрифт */
 }
-
-
 
 /* Стили для ссылок при наведении */
 header nav li a:hover {
     color: #7E162E; /* Изменение цвета текста при наведении */
 }
+
+

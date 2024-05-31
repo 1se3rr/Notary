@@ -8,15 +8,15 @@
 
 .description, .license-number {
     position: relative;
-    height: 116px;
-    width: calc(100% - 30px);
-    padding: 15px;
+    height: 7.25rem; /* 116px */
+    width: calc(100% - 1.875rem); /* 30px */
+    padding: 0.9375rem; /* 15px */
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 24px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
+    font-size: 1.5rem; /* 24px */
+    border-radius: 0.625rem; /* 10px */
+    box-shadow: 0.3125rem 0.3125rem 0.625rem rgba(22, 27, 29, 0.25), -0.3125rem -0.3125rem 0.625rem rgba(250, 251, 255, 1); /* 5px 5px 10px */
     background-color: #F2F2F2;
     text-align: justify;
     color: #333;
@@ -25,19 +25,19 @@
 }
 
 .description {
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem; /* 30px */
 }
 
 .working-hours {
     position: relative;
-    height: 262px;
+    height: 16.375rem; /* 262px */
     width: 100%;
     grid-row: span 2;
-    padding: 15px;
+    padding: 0.9375rem; /* 15px */
     display: flex;
     align-items: center;
     text-align: justify;
-    font-size: 18px;
+    font-size: 1.125rem; /* 18px */
     box-sizing: border-box;
 }
 
@@ -54,7 +54,7 @@
     left: 0;
     width: 60%;
     height: 60%;
-    border-width: 5px 0 0 5px;
+    border-width: 0.3125rem 0 0 0.3125rem; /* 5px */
 }
 
 .working-hours::after {
@@ -62,22 +62,22 @@
     right: 0;
     width: 60%;
     height: 60%;
-    border-width: 0 5px 5px 0;
+    border-width: 0 0.3125rem 0.3125rem 0; /* 5px */
 }
 
 /* Секция сертификатов */
 .certificates-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
+    gap: 1.25rem; /* 20px */
+    padding: 1.25rem; /* 20px */
 }
 
 .certificates-section iframe {
     width: 100%;
-    height: 600px;
+    height: 37.5rem; /* 600px */
     border: none;
-    border-radius: 8px;
+    border-radius: 0.5rem; /* 8px */
 }
 
 /* Стили для модального окна */
@@ -99,16 +99,16 @@
     padding: 0;
     width: 90%;
     height: 90%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0,0,0,0.3); /* 0 5px 15px */
     background-color: #fefefe;
 }
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 25px;
+    top: 0.625rem; /* 10px */
+    right: 1.5625rem; /* 25px */
     color: #fff;
-    font-size: 35px;
+    font-size: 2.1875rem; /* 35px */
     font-weight: bold;
     transition: 0.3s;
 }
@@ -118,4 +118,42 @@
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+
+@media (max-width: 480px) and (min-width: 320px)  {
+   .about{
+       display: grid;
+       grid-template-columns: 1fr;
+       grid-template-rows: auto;
+
+   }
+
+    .description ,.license-number{
+        position: relative;
+        height: auto;
+        width: 100% ;
+        margin-bottom: 1.875rem;
+    }
+
+    .license-number{
+        grid-row: 2;
+    }
+
+    .working-hours{
+        height: auto;
+        width: 100%;
+    }
+
+    .certificates-section{
+        height: auto; /* 600px */
+        padding: 0;
+    }
+
+    .certificates-section iframe{
+        height: fit-content;
+    }
+
+
 }

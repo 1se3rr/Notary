@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateFontSizes() {
         const isMobile = window.innerWidth < 768;
         const elements = [
-            { selector: 'h1', mobileSize: '24px', desktopSize: '48px' },
-            { selector: 'h2', mobileSize: '20px', desktopSize: '32px' }
+
         ];
 
         elements.forEach(element => {
@@ -71,4 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Ошибка загрузки данных заголовков:', error));
 });
 ;
+
+
 

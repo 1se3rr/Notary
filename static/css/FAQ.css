@@ -2,20 +2,20 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 1.875rem; /* 30px */
     margin: 0 auto;
 }
 
 .document-item {
     position: relative;
     width: 100%; /* Ширина с учетом отступов */
-    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
+    padding: 0.9375rem; /* 15px */
     display: flex; /* Использование flexbox для центрирования содержимого */
     align-items: center; /* Центрирование по вертикали */
     justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
-    font-size: 24px; /* Размер шрифта */
-    border-radius: 10px; /* Скругление углов */
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
+    font-size: 1.5rem; /* 24px */
+    border-radius: 0.625rem; /* 10px */
+    box-shadow: 0.3125rem 0.3125rem 0.625rem rgba(22, 27, 29, 0.25), -0.3125rem -0.3125rem 0.625rem rgba(250, 251, 255, 1); /* 5px 5px 10px */
     background-color: #F2F2F2; /* Цвет фона */
     text-align: justify; /* Выравнивание текста по левому краю */
     color: #333; /* Цвет текста */
@@ -23,14 +23,13 @@
     margin: 0;
 }
 
-
-button{
+button {
     border: none;
-    width: 45px; /* Ширина кнопки */
-    height: 45px; /* Высота кнопки */
+    width: 2.8125rem; /* 45px */
+    height: 2.8125rem; /* 45px */
     background-color: #7E162E; /* Цвет фона кнопки */
     color: white; /* Цвет текста */
-    font-size: 24px; /* Размер шрифта символа */
+    font-size: 1rem; /* 16px */
     display: flex; /* Использование flexbox для центрирования символа */
     align-items: center; /* Вертикальное центрирование символа */
     justify-content: center; /* Горизонтальное центрирование символа */
@@ -45,3 +44,14 @@ button::after {
     content: '>'; /* Символ '>' */
 }
 
+@media (max-width: 480px) and (min-width: 320px) {
+    .documents-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .document-item {
+        font-size: 1rem; /* 16px */
+    }
+}

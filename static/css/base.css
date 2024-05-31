@@ -7,31 +7,30 @@ body {
     background-color: #F2F2F2;
     margin: 0;
     font-family: 'Roboto', sans-serif; /* Указываем шрифт Roboto */
-}
-
-body {
-    margin: auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     justify-items: center;
-    gap: 80px;
+    gap: 5rem;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
-header{
+header {
     margin-top: 30px;
     width: 80%;
 }
 
-main{
+main {
     width: 80%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    gap: 80px;
+    gap: 5rem;
     box-sizing: border-box;
 }
 
+/* Скрытие элементов для скринридеров */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -40,4 +39,38 @@ main{
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+/* Медиазапросы для адаптации на различных размерах экранов */
+@media (max-width: 1200px) {
+    body {
+        gap: 4rem;
+        padding: 1.5rem;
+    }
+
+    header, main {
+        width: 85%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        gap: 3rem;
+        padding: 1rem;
+    }
+
+    header, main {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        gap: 2rem;
+        padding: 0.5rem;
+    }
+
+    header, main {
+        width: 95%;
+    }
 }
