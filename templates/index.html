@@ -20,16 +20,19 @@
 
 <section class="about">
     <h2 class="sr-only">О нашей конторе</h2>
-    <p class="description">Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна
-        <button onclick="window.location.href='{{ url_for('about_us') }}'" class="overlay-button" aria-label="Подробнее о нотариусе Бармина Татьяна Юрьевна">Подробнее</button>
+    <article class="description">
+        <p >Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна</p>
+    <button onclick="window.location.href='{{ url_for('about_us') }}'" class="overlay-button" aria-label="Подробнее о нотариусе Бармина Татьяна Юрьевна">Подробнее</button>
+    </article>
 
-    </p>
     <time class="working-hours">
         <!-- Добавьте сюда время работы или оставьте пустым для дальнейшего наполнения -->
     </time>
-    <p class="license-number">Лицензия №98 выдана 23 декабря 2014 года Управлением Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу
-        <button onclick="location.href='https://drive.google.com/file/d/10jo093lVcA8VDz_hW7LGkW27fxfx0vTz/preview'" class="overlay-button"  allow="autoplay">Подробнее</button>
-    </p>
+    <article class="license-number">
+         <p >Лицензия №98 выдана 23 декабря 2014 года Управлением Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу</p>
+    <button onclick="location.href='https://drive.google.com/file/d/10jo093lVcA8VDz_hW7LGkW27fxfx0vTz/preview'" class="overlay-button" allow="autoplay">Подробнее</button>
+    </article>
+
 </section>
 
 <section class="notarial-actions">
@@ -45,7 +48,7 @@
             <ul class="actions-list" id="categories-list-left"></ul>
             <ul class="actions-list" id="categories-list-right"></ul>
         </div>
-        <button onclick="window.location.href='{{ url_for('notarial_acts') }}'" class="overlay-button" aria-label="Подробнее о нотприальных действиях">Подробнее</button>
+        <button onclick="window.location.href='{{ url_for('notarial_acts') }}'" class="overlay-button" aria-label="Подробнее о нотариальных действиях">Подробнее</button>
     </section>
     <aside class="text-related-to-notary">
         <p>Нотариат в РФ призван обеспечивать в соответствии с Конституцией РФ, конституциями (уставами) субъектов РФ, настоящими Основами защиту прав и законных интересов граждан и юридических лиц путем совершения нотариусами предусмотренных законодательными актами нотариальных действий от имени РФ.</p>
@@ -59,8 +62,8 @@
     </header>
     <section class="tariffs-section">
         <ul id="titles-list-left" style="list-style-type: none;"></ul>
-    <ul id="titles-list-right" style="list-style-type: none;"></ul>
-    <button onclick="window.location.href='{{ url_for('tariffs') }}'" class="overlay-button" aria-label="Подробнее о тарифах">Подробнее</button>
+        <ul id="titles-list-right" style="list-style-type: none;"></ul>
+        <button onclick="window.location.href='{{ url_for('tariffs') }}'" class="overlay-button" aria-label="Подробнее о тарифах">Подробнее</button>
     </section>
     <article class="text-related-to-tariffs">
         <p>За совершение нотариальных действий нотариус, занимающийся частной практикой, взимает единый нотариальный тариф (далее - нотариальный тариф), включающий федеральный и региональный тарифы.</p>
@@ -71,7 +74,7 @@
     </div>
     <div class="gos-link">
         <p>Запишитесь на прием через госуслуги</p>
-        <button  onclick="location.href='https://www.gosuslugi.ru/600771/1/form'"class="gos-button" aria-label="Записаться на прием через госуслуги"></button>
+        <button onclick="location.href='https://www.gosuslugi.ru/600771/1/form'" class="gos-button" aria-label="Записаться на прием через госуслуги"></button>
     </div>
 </section>
 

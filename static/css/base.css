@@ -1,3 +1,4 @@
+/* Общие стили для текстовых элементов */
 body, input, button, textarea, select {
     font-family: 'Roboto', sans-serif;
 }
@@ -6,7 +7,6 @@ body, input, button, textarea, select {
 body {
     background-color: #F2F2F2;
     margin: 0;
-    font-family: 'Roboto', sans-serif; /* Указываем шрифт Roboto */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -16,11 +16,13 @@ body {
     box-sizing: border-box;
 }
 
+/* Стили для заголовка */
 header {
     margin-top: 30px;
     width: 80%;
 }
 
+/* Стили для основного контента */
 main {
     width: 80%;
     display: grid;
@@ -42,29 +44,7 @@ main {
 }
 
 /* Медиазапросы для адаптации на различных размерах экранов */
-@media (max-width: 1200px) {
-    body {
-        gap: 4rem;
-        padding: 1.5rem;
-    }
-
-    header, main {
-        width: 85%;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        gap: 3rem;
-        padding: 1rem;
-    }
-
-    header, main {
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 480px) and (min-width: 320px) {
     body {
         gap: 2rem;
         padding: 0.5rem;
@@ -72,5 +52,6 @@ main {
 
     header, main {
         width: 95%;
+        row-gap: 40px;
     }
 }

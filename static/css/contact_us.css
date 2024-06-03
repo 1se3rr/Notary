@@ -4,13 +4,15 @@
 .contact{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, auto);
     grid-template-rows: auto;
     gap: 30px;
+
 }
 
-.whatsapp-link, .telegram-link, .gos-link{
-    width: 100%;
+.whatsapp-link, .telegram-link{
+    width: fit-content;
+    height: fit-content;
     position: relative;
     overflow: hidden;
     margin: 0;
@@ -20,9 +22,49 @@
     box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
     background-color: #F2F2F2; /* Цвет фона */
     border: none;
+
+
 }
 
 
+.gos-link {
+    position: relative;
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size:  1.125rem;
+    width: 100%;
+    height: fit-content;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
+    overflow-wrap: break-word;
+
+}
+
+ .gos-button {
+    border: none;
+    width: 45px;
+    height: 45px;
+    background-color: #7E162E;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.faq-button::after, .gos-button::after {
+    content: '>';
+}
 
 .whatsapp img, .telegram img{
     width: 100%; /* Ширина изображения равна ширине контейнера */
@@ -32,27 +74,26 @@
 
 .adress{
     position: relative;
-    height: auto;
-    width: 100%; /* Ширина с учетом отступов */
-    padding: 15px; /* Отступы со всех сторон по 15 пикселей */
-    display: flex; /* Использование flexbox для центрирования содержимого */
-    align-items: center; /* Центрирование по вертикали */
-    justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
-    font-size: 24px; /* Размер шрифта */
-    border-radius: 10px; /* Скругление углов */
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
-    background-color: #F2F2F2; /* Цвет фона */
-    text-align: justify; /* Выравнивание текста по левому краю */
-    color: #333; /* Цвет текста */
-    box-sizing: border-box; /* Учитывает отступы в общий размер */
     margin: 0;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size:  1.125rem;
+    width: 100%;
+    height: fit-content;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
+    overflow-wrap: break-word;
 }
 
 .contact-info{
     display: flex;
     position: relative;
-    height: 262px;
-    width: 100%;
+    height: auto;
+    width: fit-content;
     padding: 15px;
     text-align: justify;
     font-size: 18px;
@@ -61,6 +102,9 @@
     align-items: stretch;
     justify-content: center;
     align-content: center;
+    grid-row: span 2;
+
+
 }
 
 .contact-info p{
@@ -91,10 +135,11 @@
 }
 
 .yandex {
-    width: 100%;
+    width: 100% ;
     display: flex;
     justify-content: center;
     margin-bottom: 20px; /* Отступ снизу для отделения от других секций */
+    grid-row: span 3;
 }
 
 .map-container {

@@ -13,7 +13,7 @@
     display: flex; /* Использование flexbox для центрирования содержимого */
     align-items: center; /* Центрирование по вертикали */
     justify-content: flex-start; /* Выравнивание по левому краю внутри flex-контейнера */
-    font-size: 1.5rem; /* 24px */
+    font-size: 18px; /* 24px */
     border-radius: 0.625rem; /* 10px */
     box-shadow: 0.3125rem 0.3125rem 0.625rem rgba(22, 27, 29, 0.25), -0.3125rem -0.3125rem 0.625rem rgba(250, 251, 255, 1); /* 5px 5px 10px */
     background-color: #F2F2F2; /* Цвет фона */
@@ -29,7 +29,7 @@ button {
     height: 2.8125rem; /* 45px */
     background-color: #7E162E; /* Цвет фона кнопки */
     color: white; /* Цвет текста */
-    font-size: 1rem; /* 16px */
+    font-size: 24px; /* 16px */
     display: flex; /* Использование flexbox для центрирования символа */
     align-items: center; /* Вертикальное центрирование символа */
     justify-content: center; /* Горизонтальное центрирование символа */
