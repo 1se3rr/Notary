@@ -28,7 +28,7 @@ main {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    gap: 5rem;
+    gap: 100px;
     box-sizing: border-box;
 }
 
@@ -51,7 +51,7 @@ main {
     }
 
     header, main {
-        width: 95%;
+        width: 80%;
         row-gap: 40px;
     }
 }

@@ -1,26 +1,23 @@
 
-
-
-.contact{
+.contact {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: auto;
     gap: 30px;
-
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-rows: auto;
 }
 
+
 .whatsapp-link, .telegram-link{
-    width: fit-content;
-    height: fit-content;
     position: relative;
     overflow: hidden;
+    min-width: 150px;
     margin: 0;
     box-sizing: border-box;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1); /* Двойная тень */
-    background-color: #F2F2F2; /* Цвет фона */
+    box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
+    background-color: #F2F2F2;
     border: none;
 
 
@@ -34,15 +31,12 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size:  1.125rem;
+    font-size: 1.125rem;
     width: 100%;
-    height: fit-content;
     background-color: #F2F2F2;
-    border-radius: 10px;
     box-sizing: border-box;
     box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
     overflow-wrap: break-word;
-
 }
 
  .gos-button {
@@ -68,20 +62,20 @@
 
 .whatsapp img, .telegram img{
     width: 100%; /* Ширина изображения равна ширине контейнера */
-    height: auto; /* Высота автоматически подстраивается под ширину */
-    border-radius: 10px; /* Скругление углов изображения, если это необходимо */
+    height:100%; /* Высота автоматически подстраивается под ширину */
+    border-radius: 10px;
+    /* Скругление углов изображения, если это необходимо */
 }
 
 .adress{
-    position: relative;
+   position: relative;
     margin: 0;
     padding: 15px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size:  1.125rem;
+    font-size: 1.125rem;
     width: 100%;
-    height: fit-content;
     background-color: #F2F2F2;
     border-radius: 10px;
     box-sizing: border-box;
@@ -89,22 +83,19 @@
     overflow-wrap: break-word;
 }
 
-.contact-info{
+.contact-info {
+    align-content: center;
     display: flex;
     position: relative;
-    height: auto;
-    width: fit-content;
+    /* width: fit-content; */
+    height: fit-content;
     padding: 15px;
     text-align: justify;
-    font-size: 18px;
+    font-size: 16px;
     box-sizing: border-box;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
     align-content: center;
-    grid-row: span 2;
-
-
+    flex-wrap: wrap;
 }
 
 .contact-info p{
@@ -135,11 +126,10 @@
 }
 
 .yandex {
-    width: 100% ;
+    width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px; /* Отступ снизу для отделения от других секций */
-    grid-row: span 3;
+   grid-column: span 3;
 }
 
 .map-container {
@@ -167,4 +157,28 @@
 
 .map-link:last-of-type {
     top: 14px;
+}
+
+@media (max-width: 480px) and (min-width: 320px) {
+
+.contact {
+        width: 100%;
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .whatsapp-link, .telegram-link {
+        min-width: 100px;
+    }
+
+    .gos-link {
+        width: 100%;
+        grid-column: span 2;
+    }
+
+    .adress, .contact-info, .yandex {
+        grid-column: span 2;
+    }
 }

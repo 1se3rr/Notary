@@ -2,10 +2,21 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/about_us.css') }}">
+<!-- Метатеги для SEO -->
+<meta name="description" content="Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна">
+<meta name="keywords" content="нотариус, нотариальные услуги, Новый Уренгой, Бармина Татьяна Юрьевна, лицензии, сертификаты">
+<meta name="author" content="Нотариус Бармина Татьяна Юрьевна">
+
+<!-- Open Graph метатеги -->
+<meta property="og:title" content="О нашей конторе - Нотариус Бармина Татьяна Юрьевна">
+<meta property="og:description" content="Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна. Лицензии и сертификаты.">
+<meta property="og:image" content="{{ url_for('static', filename='img/logo.jpg') }}">
+<meta property="og:url" content="{{ url_for('about_us', _external=True) }}">
+<meta property="og:type" content="website">
 {% endblock %}
 
 {% block title %}
-Нотариальные тарифы и регуляции
+О нашей конторе - Нотариус Бармина Татьяна Юрьевна
 {% endblock %}
 
 {% block content %}

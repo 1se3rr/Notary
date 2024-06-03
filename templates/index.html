@@ -3,6 +3,17 @@
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<!-- Метатеги для SEO -->
+<meta name="description" content="Нотариус Бармина Татьяна Юрьевна, предоставляющая нотариальные услуги в Новом Уренгое.">
+<meta name="keywords" content="нотариус, нотариальные услуги, Новый Уренгой, Бармина Татьяна Юрьевна">
+<meta name="author" content="Нотариус Бармина Татьяна Юрьевна">
+
+<!-- Open Graph метатеги -->
+<meta property="og:title" content="Нотариус Бармина Татьяна Юрьевна">
+<meta property="og:description" content="Нотариус Бармина Татьяна Юрьевна, предоставляющая нотариальные услуги в Новом Уренгое.">
+<meta property="og:image" content="{{ url_for('static', filename='img/logo.jpg') }}">
+<meta property="og:url" content="{{ url_for('index', _external=True) }}">
+<meta property="og:type" content="website">
 {% endblock %}
 
 {% block title %}
@@ -21,18 +32,16 @@
 <section class="about">
     <h2 class="sr-only">О нашей конторе</h2>
     <article class="description">
-        <p >Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна</p>
-    <button onclick="window.location.href='{{ url_for('about_us') }}'" class="overlay-button" aria-label="Подробнее о нотариусе Бармина Татьяна Юрьевна">Подробнее</button>
+        <p>Нотариальный округ города Нового Уренгоя Ямало-Ненецкого автономного округа нотариус Бармина Татьяна Юрьевна</p>
+        <button onclick="window.location.href='{{ url_for('about_us') }}'" class="overlay-button" aria-label="Подробнее о нотариусе Бармина Татьяна Юрьевна">Подробнее</button>
     </article>
-
     <time class="working-hours">
         <!-- Добавьте сюда время работы или оставьте пустым для дальнейшего наполнения -->
     </time>
     <article class="license-number">
-         <p >Лицензия №98 выдана 23 декабря 2014 года Управлением Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу</p>
-    <button onclick="location.href='https://drive.google.com/file/d/10jo093lVcA8VDz_hW7LGkW27fxfx0vTz/preview'" class="overlay-button" allow="autoplay">Подробнее</button>
+        <p>Лицензия №98 выдана 23 декабря 2014 года Управлением Министерства Юстиции Российской Федерации по Ямало-Ненецкому автономному округу</p>
+        <button onclick="location.href='https://drive.google.com/file/d/10jo093lVcA8VDz_hW7LGkW27fxfx0vTz/preview'" class="overlay-button" allow="autoplay">Подробнее</button>
     </article>
-
 </section>
 
 <section class="notarial-actions">
@@ -86,7 +95,7 @@
     </div>
     <div class="reviews-container">
         <iframe class="reviews-frame" src="https://yandex.ru/maps-reviews-widget/23612161319?comments" aria-label="Отзывы клиентов"></iframe>
-        <a href="https://yandex.ru/maps/org/notarius_barmina_t_yu_/23612161319/" target="_blank" class="reviews-link">Нотариус Бармина Т. Ю. на карте Нового Уренгоя — Яндекс Карты</a>
+        <a href="https://yandex.ru/maps/org/notarius_barmina_t_yu_/23612161319/" target="_blank" class="reviews-link">Нотариус Бармина Т. Ю. на карте Нового Уренгоя — Яндекс Карты</a>
     </div>
 </section>
 {% endblock %}

@@ -3,6 +3,17 @@
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/tariffs.css') }}">
 <script src="{{ url_for('static', filename='js/tariffs.js') }}"></script>
+<!-- Метатеги для SEO -->
+<meta name="description" content="Информация о нотариальных тарифах и регуляциях, включая приказ Минюста России от 12.09.2023.">
+<meta name="keywords" content="нотариальные тарифы, приказ Минюста, региональные тарифы, льготы, нотариальные услуги">
+<meta name="author" content="Нотариус Бармина Татьяна Юрьевна">
+
+<!-- Open Graph метатеги -->
+<meta property="og:title" content="Нотариальные тарифы и регуляции - Нотариус Бармина Татьяна Юрьевна">
+<meta property="og:description" content="Информация о нотариальных тарифах и регуляциях, включая приказ Минюста России от 12.09.2023.">
+<meta property="og:image" content="{{ url_for('static', filename='img/logo.jpg') }}">
+<meta property="og:url" content="{{ url_for('tariffs', _external=True) }}">
+<meta property="og:type" content="website">
 {% endblock %}
 
 {% block title %}
@@ -19,13 +30,19 @@
     <div class="gos-link">
         <h2 class="sr-only">Запись на прием через госуслуги</h2>
         <p>Запишитесь на прием через госуслуги</p>
-        <button class="gos-button"></button>
+        <button class="gos-button" onclick="location.href='https://www.gosuslugi.ru/600771/1/form'" aria-label="Записаться на прием через госуслуги"></button>
     </div>
 
+    <section class="notary-article-link">
+        <h2 class="sr-only">Основы законодательства о нотариате</h2>
+        <p><a href="URL-статьи">Льготы по оплате тарифа за совершение нотариальных действий и взиманию платы за  оказание нотариусами услуг правового и технического характера</a>.</p>
+    </section>
 
 </section>
 
-   <div class="tariffs-section">
+
+
+<div class="tariffs-section">
     <div id="tariffs-container">
         <!-- Данные будут загружены с помощью JavaScript -->
     </div>
@@ -38,6 +55,4 @@
         <!-- Содержимое модального окна будет обновлено с помощью JavaScript -->
     </div>
 </div>
-
-
 {% endblock %}

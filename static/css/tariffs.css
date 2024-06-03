@@ -54,6 +54,19 @@
     content: '>'; /* Символ '>' */
 }
 
+.notary-article-link {
+    position: relative;
+    height: 4.75rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    font-size: 1.125rem;
+    margin-bottom: 1.875rem;
+    grid-column: span 2;
+    flex-direction: column;
+}
+
 .tariffs-section {
     width: 100%;
 }

@@ -26,3 +26,38 @@ header nav li a:hover {
 }
 
 
+@media (max-width: 480px) and (min-width: 320px) and (min-height: 667px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 60px; /* Adjust based on your header height */
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #F2F2F2;
+        box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
+        border-radius: 0 0 10px 10px;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav li {
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    header nav li a {
+        width: 100%;
+    }
+}

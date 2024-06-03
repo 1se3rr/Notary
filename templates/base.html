@@ -8,7 +8,11 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}">
+    <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+
     {% block head%}
     {% endblock %}
 </head>

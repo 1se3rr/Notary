@@ -369,7 +369,7 @@
     justify-content: flex-start;
     font-size:  1.125rem;
     width: 100%;
-    height: 77px;
+    height: fit-content;
     background-color: #F2F2F2;
     border-radius: 10px;
     box-sizing: border-box;
@@ -472,7 +472,7 @@
     height: 800px;
 }
 
-@media (max-width: 480px) and (min-width: 320px) {
+@media (max-width: 480px) and (min-width: 320px) and (min-height: 568px) {
 
     .name-and-logo, .about, .notarial-actions, .price-actions, .yandex {
         width: 100%;
@@ -480,6 +480,14 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto;
     }
+
+    .categories-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0 30px;
+    flex-direction: column;
+}
 
     .notary-name {
         font-size: 24px;
@@ -523,7 +531,7 @@
     .actions-section {
         position: relative;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         height: auto;
         width: 100%;
@@ -546,13 +554,13 @@
     }
 
     .actions-list li, .price-actions li {
-        font-size: 16px;
+            /* font-size: 16px; */
         padding: 0;
         margin-bottom: 20px;
-        align-items: center;
         display: flex;
         overflow-wrap: break-word;
         flex-direction: row;
+        align-items: center;
     }
 
     .price-actions li {
@@ -608,15 +616,16 @@
         height: 800px;
     }
 
-    .faq-link, .gos-link{
-       width: 100%;
-        height: 2.8125rem;
-        font-size: 1rem;
-        padding-left: 15px;
+    .faq-link, .gos-link {
+    width: 100%;
+    height: fit-content;
+    font-size: 1rem;
+    padding-right: 60px;
     }
-
-
 }
+
+
+
 
 
 

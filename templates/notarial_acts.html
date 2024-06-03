@@ -2,6 +2,17 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/notarial_acts.css') }}">
+<!-- Метатеги для SEO -->
+<meta name="description" content="Наша нотариальная контора совершает все виды нотариальных действий, предусмотренных действующим законодательством.">
+<meta name="keywords" content="нотариальные действия, нотариальные услуги, доверенности, завещания, регистрация, свидетельства, наследство, Нотариальная палата Ямало-Ненецкого автономного округа">
+<meta name="author" content="Нотариус Бармина Татьяна Юрьевна">
+
+<!-- Open Graph метатеги -->
+<meta property="og:title" content="Нотариальные действия - Нотариус Бармина Татьяна Юрьевна">
+<meta property="og:description" content="Наша нотариальная контора совершает все виды нотариальных действий, предусмотренных действующим законодательством.">
+<meta property="og:image" content="{{ url_for('static', filename='img/logo.jpg') }}">
+<meta property="og:url" content="{{ url_for('notarial_acts', _external=True) }}">
+<meta property="og:type" content="website">
 {% endblock %}
 
 {% block title %}
@@ -19,7 +30,7 @@
     </section>
 
     <figure class="notary-photo">
-        <img src="" alt="Фотография нотариальной конторы">
+        <img src="{{ url_for('static', filename='img/notary_office.jpg') }}" alt="Фотография нотариальной конторы">
         <figcaption>Нотариальная контора</figcaption>
     </figure>
 
@@ -36,7 +47,7 @@
     <aside class="faq-section">
         <h2 class="sr-only">Госуслуги и запись на прием</h2>
         <p>Запишитесь на прием через госуслуги</p>
-        <button class="faq-button"></button>
+        <button class="faq-button" onclick="location.href='https://www.gosuslugi.ru/600771/1/form'" aria-label="Записаться на прием через госуслуги"></button>
     </aside>
 </section>
 
