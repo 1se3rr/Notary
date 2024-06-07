@@ -1,5 +1,6 @@
 import uuid
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
+from flask_admin.contrib.sqla.fields import QuerySelectField
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
@@ -38,7 +39,6 @@ login_manager.init_app(app)
 # Включение защиты CSRF
 csrf = CSRFProtect(app)
 
-# Инициализация Flask-Migrate
 migrate = Migrate(app, db)
 
 
@@ -65,6 +65,9 @@ class Category(db.Model):
     name = db.Column(db.String(50), nullable=False)
     actions = db.relationship('NotaryAction', backref='category', lazy=True)
 
+    def __str__(self):
+        return self.name
+
 
 class NotaryAction(db.Model):
     __tablename__ = 'notary_actions'
@@ -73,6 +76,9 @@ class NotaryAction(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id_category'), nullable=False)
     description = db.Column(db.String(1000))
 
+    def __str__(self):
+        return self.name
+
 
 class TariffType(db.Model):
     __bind_key__ = 'tariffs'
@@ -80,6 +86,9 @@ class TariffType(db.Model):
     id_tariff_types = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     tariff_prices = db.relationship('TariffPrice', backref='tariff_type', lazy=True)
+
+    def __str__(self):
+        return self.name
 
 
 class TariffPrice(db.Model):
@@ -92,12 +101,18 @@ class TariffPrice(db.Model):
     id_service = db.Column(db.Integer, db.ForeignKey('services.id_service'), nullable=False)
     service = db.relationship('Service', backref='tariff_prices')
 
+    def __str__(self):
+        return f"{self.service.name} - {self.price}"
+
 
 class ArticleNorm(db.Model):
     __bind_key__ = 'tariffs'
     __tablename__ = 'article_norms'
     id_norm = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
+
+    def __str__(self):
+        return self.name
 
 
 class Title(db.Model):
@@ -106,6 +121,9 @@ class Title(db.Model):
     id_title = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
     services = db.relationship('Service', backref='title', lazy=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Service(db.Model):
@@ -116,6 +134,9 @@ class Service(db.Model):
     title_id = db.Column(db.Integer, db.ForeignKey('titles.id_title'))
     norm_id = db.Column(db.Integer, db.ForeignKey('article_norms.id_norm'), nullable=False)
     article_norm = db.relationship('ArticleNorm', backref='services', lazy=True)
+
+    def __str__(self):
+        return self.name
 
 
 # Настройка админской панели с защитой
@@ -128,7 +149,46 @@ class AdminMixin:
 
 
 class MyModelView(AdminMixin, ModelView):
-    pass
+    form_overrides = {
+        'category_id': QuerySelectField,
+        'tariff_type_id': QuerySelectField,
+        'title_id': QuerySelectField,
+        'norm_id': QuerySelectField
+    }
+
+    form_args = {
+        'category_id': {
+            'query_factory': lambda: Category.query,
+            'get_label': 'name'
+        },
+        'tariff_type_id': {
+            'query_factory': lambda: TariffType.query,
+            'get_label': 'name'
+        },
+        'title_id': {
+            'query_factory': lambda: Title.query,
+            'get_label': 'name'
+        },
+        'norm_id': {
+            'query_factory': lambda: ArticleNorm.query,
+            'get_label': 'name'
+        }
+    }
+
+
+class NotaryActionView(MyModelView):
+    form_columns = ['name', 'category_id', 'description']
+    column_labels = dict(name='Наименование', category_id='Категория', description='Описание')
+
+
+class TariffPriceView(MyModelView):
+    form_columns = ['price', 'description', 'tariff_type_id', 'service']
+    column_labels = dict(price='Цена', description='Описание', tariff_type_id='Тип тарифа', service='Услуга')
+
+
+class ServiceView(MyModelView):
+    form_columns = ['name', 'title_id', 'norm_id']
+    column_labels = dict(name='Наименование', title_id='Название', norm_id='Норма')
 
 
 class MyAdminIndexView(AdminMixin, AdminIndexView):
@@ -137,7 +197,7 @@ class MyAdminIndexView(AdminMixin, AdminIndexView):
         return self.render('admin/index.html')
 
 
-admin = Admin(app, name='Admin Panel', template_mode='bootstrap3', index_view=MyAdminIndexView(), url='/admin_panel')
+admin = Admin(app, name='Админ Панель', template_mode='bootstrap3', index_view=MyAdminIndexView(), url='/admin_panel')
 
 # Создаем движки и сессии для каждой базы данных
 with app.app_context():
@@ -151,19 +211,19 @@ with app.app_context():
     tariffs_session = TariffsSession()
 
     # Добавляем модели в Flask-Admin
-    admin.add_view(MyModelView(Category, db.session))
-    admin.add_view(MyModelView(NotaryAction, db.session))
-    admin.add_view(MyModelView(TariffType, tariffs_session))
-    admin.add_view(MyModelView(TariffPrice, tariffs_session))
-    admin.add_view(MyModelView(ArticleNorm, tariffs_session))
-    admin.add_view(MyModelView(Title, tariffs_session))
-    admin.add_view(MyModelView(Service, tariffs_session))
+    admin.add_view(MyModelView(Category, db.session, name='Категории'))
+    admin.add_view(NotaryActionView(NotaryAction, db.session, name='Нотариальные Действия'))
+    admin.add_view(MyModelView(TariffType, tariffs_session, name='Типы Тарифов'))
+    admin.add_view(TariffPriceView(TariffPrice, tariffs_session, name='Тарифы'))
+    admin.add_view(MyModelView(ArticleNorm, tariffs_session, name='Нормы'))
+    admin.add_view(MyModelView(Title, tariffs_session, name='Заголовки'))
+    admin.add_view(ServiceView(Service, tariffs_session, name='Услуги'))
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+    username = StringField('Имя пользователя', validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    submit = SubmitField('Войти')
 
 
 @app.route("/")
@@ -181,7 +241,7 @@ def login():
         if user and user.check_password(password):
             login_user(user)
             return redirect(url_for('admin.index'))
-        flash('Invalid username or password')
+        flash('Неверное имя пользователя или пароль')
     return render_template('admin/login.html', form=form)
 
 
