@@ -1,5 +1,4 @@
 import uuid
-
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
@@ -9,14 +8,15 @@ from sqlalchemy.orm import sessionmaker
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from flask_talisman import Talisman
+from flask_wtf import FlaskForm, CSRFProtect
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
 # Генерация nonce для CSP
 nonce = uuid.uuid4().hex
-
-# Обновленная конфигурация CSP
-
 
 # Конфигурация базы данных
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notarial_acts.db'
@@ -25,10 +25,21 @@ app.config['SQLALCHEMY_BINDS'] = {
 }
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.urandom(24)
+
+# Настройка параметров для безопасности
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 280
+app.config['SQLALCHEMY_POOL_TIMEOUT'] = 20
+
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.init_app(app)
+
+# Включение защиты CSRF
+csrf = CSRFProtect(app)
+
+# Инициализация Flask-Migrate
+migrate = Migrate(app, db)
 
 
 class User(UserMixin, db.Model):
@@ -60,7 +71,7 @@ class NotaryAction(db.Model):
     id_action = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id_category'), nullable=False)
-    description = db.Column(db.String(255))
+    description = db.Column(db.String(1000))
 
 
 class TariffType(db.Model):
@@ -149,6 +160,12 @@ with app.app_context():
     admin.add_view(MyModelView(Service, tariffs_session))
 
 
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
+
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -156,15 +173,16 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+    form = LoginForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
         user = User.query.filter_by(username=username).first()
         if user and user.check_password(password):
             login_user(user)
             return redirect(url_for('admin.index'))
         flash('Invalid username or password')
-    return render_template('login.html')
+    return render_template('admin/login.html', form=form)
 
 
 @app.route('/logout')
@@ -233,6 +251,12 @@ def contact_us():
 @app.route("/FAQ")
 def FAQ():
     return render_template('FAQ.html')
+
+
+@app.route('/admin_panel')
+@login_required
+def admin_panel():
+    return redirect(url_for('admin.index'))
 
 
 if __name__ == '__main__':

@@ -7,11 +7,12 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form method="post">
+    <form method="post" action="{{ url_for('login') }}">
+        {{ form.hidden_tag() }}
         <label for="username">Username</label>
-        <input type="text" id="username" name="username">
+        {{ form.username(size=32) }}
         <label for="password">Password</label>
-        <input type="password" id="password" name="password">
+        {{ form.password(size=32) }}
         <button type="submit">Login</button>
     </form>
     {% with messages = get_flashed_messages() %}

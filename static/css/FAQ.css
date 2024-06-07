@@ -21,6 +21,12 @@
     color: #333; /* Цвет текста */
     box-sizing: border-box; /* Учитывает отступы в общий размер */
     margin: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.document-item:hover  {
+    transform: translateY(-8px);
+    box-shadow: 10px 10px 20px rgba(22, 27, 29, 0.3);
 }
 
 button {
@@ -44,14 +50,16 @@ button::after {
     content: '>'; /* Символ '>' */
 }
 
-@media (max-width: 480px) and (min-width: 320px) {
+@media (max-width: 893px) and (min-width: 320px) {
     .documents-section {
+
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
     }
 
     .document-item {
+         min-height: 130px;
         font-size: 1rem; /* 16px */
     }
 }

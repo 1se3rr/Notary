@@ -5,6 +5,8 @@
     grid-template-rows: auto;
 }
 
+
+
 .legal-document article {
     position: relative;
     min-height: 4.8125rem; /* 77px */
@@ -31,6 +33,12 @@
     border-radius: 0.625rem; /* 10px */
     box-sizing: border-box;
     box-shadow: 0.3125rem 0.3125rem 0.625rem rgba(22, 27, 29, 0.25), -0.3125rem -0.3125rem 0.625rem rgba(250, 251, 255, 1); /* 5px 5px 10px */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gos-link:hover, .service-button:hover {
+    transform: translateY(-8px);
+    box-shadow: 10px 10px 20px rgba(22, 27, 29, 0.3);
 }
 
 .gos-button {
@@ -47,14 +55,17 @@
     position: absolute; /* Абсолютное позиционирование */
     right: 0; /* Отступ справа */
     bottom: 0; /* Отступ снизу */
-    cursor: pointer; /* Курсор в виде указателя для улучшения UX */
+    cursor: pointer;
+
 }
+
+
 
 .gos-button::after {
     content: '>'; /* Символ '>' */
 }
 
-.notary-article-link {
+.notary-tariffs-link {
     position: relative;
     height: 4.75rem;
     width: 100%;
@@ -90,7 +101,13 @@
     cursor: pointer;
     border-radius: 0.625rem; /* 10px */
     margin-bottom: 1.875rem; /* 30px */
+    transition: background-color 0.3s ease;
 }
+
+.title-button:hover {
+    transform: scale(1.05);
+}
+
 
 .services-list {
     display: grid;
@@ -113,6 +130,7 @@
     font-size: 1rem; /* 16px */
     margin-bottom: 1.875rem; /* 30px */
     border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tariff-block {
@@ -172,7 +190,8 @@
     width: 48%;
 }
 
-@media (max-width: 480px) and (min-width: 320px) and (min-height: 667px) {
+
+@media (max-width: 893px) and (min-width: 320px) and (min-height: 667px) {
     .legal-document {
         display: grid;
         grid-template-columns: 1fr;
@@ -186,9 +205,10 @@
 
     .gos-link {
         width: 100%;
-        height: 2.8125rem;
+        height: 120px;
         font-size: 1rem; /* 16px */
         padding-left: 15px  ;
+        margin-bottom: 30px;
     }
 
     .services-list {
@@ -202,5 +222,12 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+    }
+
+    .notary-tariffs-link{
+        grid-column: span 1;
+        font-size: 16px;
+
+
     }
 }

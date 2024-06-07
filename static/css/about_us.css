@@ -22,6 +22,12 @@
     color: #333;
     box-sizing: border-box;
     margin: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.description:hover, .license-number:hover  {
+    transform: translateY(-8px);
+    box-shadow: 10px 10px 20px rgba(22, 27, 29, 0.3);
 }
 
 .description {
@@ -29,17 +35,30 @@
 }
 
 .working-hours {
-    position: relative;
-    height: 16.375rem; /* 262px */
+   position: relative;
+    height: 262px;
     width: 100%;
     grid-row: span 2;
-    padding: 0.9375rem; /* 15px */
+    padding: 15px;
     display: flex;
     align-items: center;
     text-align: justify;
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
     box-sizing: border-box;
+    overflow-wrap: break-word;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.working-hours span {
+    display: block;
+    margin: 5px 0;
+}
+
+.working-hours .days {
+    font-weight: bold;
+    color: #7E162E;
+        }
 
 .working-hours::before,
 .working-hours::after {
@@ -75,54 +94,17 @@
 
 .certificates-section iframe {
     width: 100%;
-    height: 37.5rem; /* 600px */
+    height: 25vw;
     border: none;
     border-radius: 0.5rem; /* 8px */
 }
 
 /* Стили для модального окна */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-    position: relative;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    height: 90%;
-    box-shadow: 0 0.3125rem 0.9375rem rgba(0,0,0,0.3); /* 0 5px 15px */
-    background-color: #fefefe;
-}
-
-.close {
-    position: absolute;
-    top: 0.625rem; /* 10px */
-    right: 1.5625rem; /* 25px */
-    color: #fff;
-    font-size: 2.1875rem; /* 35px */
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 
 
-@media (max-width: 480px) and (min-width: 320px)  {
+
+@media (max-width: 893px) and (min-width: 320px)  {
    .about{
        display: grid;
        grid-template-columns: 1fr;

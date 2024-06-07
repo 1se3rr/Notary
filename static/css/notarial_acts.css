@@ -82,7 +82,7 @@ p {
     margin-bottom: 1.875rem; /* 30px */
 }
 
-.faq-section {
+.gos-section {
     position: relative;
     margin: 0;
     padding: 0.9375rem; /* 15px */
@@ -95,10 +95,16 @@ p {
     background-color: #F2F2F2;
     border-radius: 0.625rem; /* 10px */
     box-sizing: border-box;
-    box-shadow: 0.3125rem 0.3125rem 0.625rem rgba(22, 27, 29, 0.25), -0.3125rem -0.3125rem 0.625rem rgba(250, 251, 255, 1); /* 5px 5px 10px */
+    box-shadow: 0.3125rem 0.3125rem 0.625rem rgba(22, 27, 29, 0.25), -0.3125rem -0.3125rem 0.625rem rgba(250, 251, 255, 1);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.faq-button {
+.gos-section:hover  {
+    transform: translateY(-8px);
+    box-shadow: 10px 10px 20px rgba(22, 27, 29, 0.3);
+}
+
+.gos-button {
     border: none;
     width: 2.8125rem; /* 45px */
     height: 2.8125rem; /* 45px */
@@ -115,7 +121,7 @@ p {
     cursor: pointer;
 }
 
-.faq-button::after {
+.gos-button::after {
     content: '>';
 }
 
@@ -141,12 +147,14 @@ p {
     font-size: 1rem; /* 16px */
     cursor: pointer;
     border-radius: 0.625rem; /* 10px */
+    transition: background-color 0.3s ease;
 }
 
-.category-tab.active {
-    background-color: #007bff;
-    color: white;
+.category-tab:hover {
+    transform: scale(1.05);
 }
+
+
 
 .action-item {
     cursor: pointer;
@@ -154,6 +162,14 @@ p {
     border-bottom: 0.0625rem solid #ccc; /* 1px */
     margin-bottom: 0.3125rem; /* 5px */
 }
+
+.action-item strong{
+      transition: font-size 0.3s ease;
+}
+.action-item strong:hover {
+            color: #7E162E;
+            font-size: 20px;
+        }
 
 .action-description {
     text-align: justify;
@@ -166,7 +182,9 @@ p {
     width: 100%;
 }
 
-@media (max-width: 480px) and (min-width: 320px)  {
+
+
+@media (max-width: 893px) and (min-width: 320px)  {
     .notary-info{
         width: 100%;
         display: grid;
@@ -193,7 +211,7 @@ p {
         height: fit-content ;
     }
 
-    .category-tab {
+   .category-tab {
     background-color: #F2F2F2;
     flex: 1 1 calc(50% - 1.875rem); /* гибкая ширина с минимальной шириной calc(50% - 30px) */
     height: auto;
@@ -206,16 +224,26 @@ p {
     cursor: pointer;
     padding: 0; /* 15px */
     box-sizing: border-box;
-    }
+    transition: font-size 0.3s ease;
+}
 
-    .faq-section{
+.category-tab:hover, .action-item strong:hover {
+    color: #7E162E;
+    font-size: 18px;
+}
+
+.category-tab.active, .action-item strong.active{
+    font-size: 18px;
+}
+    .gos-section{
+       height: 115px;
         width: 100%;
-        height: 2.8125rem;
         font-size: 1rem; /* 16px */
         padding-left: 15px  ;
     }
 
     .action-item {
+
     cursor: pointer;
     padding: 0.625rem; /* 10px */
     border-bottom: 0.0625rem solid #ccc; /* 1px */
@@ -232,5 +260,6 @@ p {
     width: 100%;
     }
 
-
 }
+
+

@@ -1,18 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Функция для обновления размеров шрифтов
-    function updateFontSizes() {
-        const isMobile = window.innerWidth < 768;
-        const elements = [
-
-        ];
-
-        elements.forEach(element => {
-            document.querySelectorAll(element.selector).forEach(el => {
-                el.style.fontSize = isMobile ? element.mobileSize : element.desktopSize;
-            });
-        });
-    }
-
     // Функция для загрузки категорий
     function loadCategories() {
         fetch('/api/categories')
@@ -33,12 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Ошибка загрузки категорий:', error));
     }
 
-    // Вызов функций при загрузке страницы
-    updateFontSizes();
+    // Вызов функции при загрузке страницы
     loadCategories();
-
-    // Добавление обработчика изменения размера окна
-    window.addEventListener('resize', updateFontSizes);
 });
 
 
@@ -69,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Ошибка загрузки данных заголовков:', error));
 });
-;
 
 
 

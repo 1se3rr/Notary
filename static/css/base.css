@@ -7,13 +7,14 @@ body, input, button, textarea, select {
 body {
     background-color: #F2F2F2;
     margin: 0;
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     justify-items: center;
     gap: 5rem;
-    padding: 2rem;
     box-sizing: border-box;
+    min-height: 100vh;
 }
 
 /* Стили для заголовка */
@@ -24,12 +25,13 @@ header {
 
 /* Стили для основного контента */
 main {
-    width: 80%;
+    width: 60%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 100px;
     box-sizing: border-box;
+    justify-content: center;
 }
 
 /* Скрытие элементов для скринридеров */
@@ -43,15 +45,74 @@ main {
     border: 0;
 }
 
+footer {
+    display: flex;
+    background-color: #7E162E;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+footer article  {
+    padding: 15px;
+    max-width: 200px;
+    display: flex;
+    font-size: 16px;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer article p{
+    text-align: center;
+}
+
+footer article img{
+    max-height: 100px;
+}
+
+.contact-footer {
+    color: #ffffff;
+    display: flex;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
+    text-align: justify;
+    font-size: 16px;
+    box-sizing: border-box;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
 /* Медиазапросы для адаптации на различных размерах экранов */
-@media (max-width: 480px) and (min-width: 320px) {
+@media (max-width:893px) and (min-width: 320px) {
     body {
         gap: 2rem;
-        padding: 0.5rem;
+
     }
 
     header, main {
         width: 80%;
         row-gap: 40px;
     }
+
+    footer {
+    display: flex;
+    background-color: #7E162E;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 }

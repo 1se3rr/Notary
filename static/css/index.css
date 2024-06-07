@@ -73,6 +73,12 @@
     box-sizing: border-box;
     margin: 0;
     overflow-wrap: break-word;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.description:hover, .license-number:hover, .actions-section:hover, .tariffs-section:hover, .faq-link:hover, .gos-link:hover  {
+    transform: translateY(-8px);
+    box-shadow: 10px 10px 20px rgba(22, 27, 29, 0.3);
 }
 
 .overlay-button {
@@ -103,10 +109,23 @@
     display: flex;
     align-items: center;
     text-align: justify;
-    font-size:  1.125rem;;
+    font-size: 1.125rem;
     box-sizing: border-box;
     overflow-wrap: break-word;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.working-hours span {
+    display: block;
+    margin: 5px 0;
+}
+
+.working-hours .days {
+    font-weight: bold;
+    color: #7E162E;
+        }
+
 
 .working-hours::before,
 .working-hours::after {
@@ -207,6 +226,7 @@
     margin: 0;
     box-sizing: border-box;
     justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .categories-container {
@@ -214,6 +234,7 @@
     justify-content: space-around;
     width: 100%;
     padding: 0 30px;
+
 }
 
 .actions-list {
@@ -312,6 +333,7 @@
     margin: 0;
     box-sizing: border-box;
     justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tariffs-section li img {
@@ -375,6 +397,7 @@
     box-sizing: border-box;
     box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
     overflow-wrap: break-word;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .faq-link {
@@ -472,7 +495,7 @@
     height: 800px;
 }
 
-@media (max-width: 480px) and (min-width: 320px) and (min-height: 568px) {
+@media (max-width: 893px) and (min-width: 320px) and (min-height: 568px) {
 
     .name-and-logo, .about, .notarial-actions, .price-actions, .yandex {
         width: 100%;
@@ -485,7 +508,7 @@
     display: flex;
     justify-content: space-around;
     width: 100%;
-    padding: 0 30px;
+    padding:  30px;
     flex-direction: column;
 }
 
@@ -546,15 +569,21 @@
 
     .actions-list, .tariffs-section {
         margin: 0;
-        padding: 0;
+
+    }
+
+    .tariffs-section {
+        padding: 15px;
+        text-align: justify;
     }
 
     .tariffs-section ul{
-        padding-left: 0;
+        padding: 0;
+        margin: 10px;
     }
 
     .actions-list li, .price-actions li {
-            /* font-size: 16px; */
+        font-size: 16px;
         padding: 0;
         margin-bottom: 20px;
         display: flex;
@@ -622,6 +651,17 @@
     font-size: 1rem;
     padding-right: 60px;
     }
+
+    .description, .license-number, .actions-section, .tariffs-section, .faq-link, .gos-link {
+    transition: transform 0.5s ease-in-out, scale 0.5s ease-in-out;
+}
+
+    .description.scroll-lift, .license-number.scroll-lift, .actions-section.scroll-lift, .tariffs-section.scroll-lift, .faq-link.scroll-lift, .gos-link.scroll-lift {
+    transform: translateY(-10px) scale(1.1); /* Поднимание и увеличение */
+}
+
+
+
 }
 
 
