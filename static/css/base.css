@@ -18,7 +18,7 @@ body {
 }
 
 /* Стили для заголовка */
-header {
+.navbar {
     margin-top: 1%;
     width: 80%;
     position: fixed;
