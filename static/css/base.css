@@ -19,12 +19,15 @@ body {
 
 /* Стили для заголовка */
 header {
-    margin-top: 30px;
+    margin-top: 1%;
     width: 80%;
+    position: fixed;
+    z-index: 1501;
 }
 
 /* Стили для основного контента */
 main {
+    padding-top: 160px;
     width: 60%;
     display: grid;
     grid-template-columns: 1fr;
@@ -100,8 +103,13 @@ footer article img{
     }
 
     header, main {
+        padding-top: 100px;
         width: 80%;
         row-gap: 40px;
+    }
+
+    header{
+        padding-top: 0;
     }
 
     footer {

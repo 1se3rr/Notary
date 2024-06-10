@@ -20,7 +20,7 @@ def load_user(user_id):
 class Category(db.Model):
     __tablename__ = 'categories'
     id_category = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String(150), nullable=False)
     actions = db.relationship('NotaryAction', backref='category', lazy=True)
 
     def __str__(self):
@@ -29,9 +29,9 @@ class Category(db.Model):
 class NotaryAction(db.Model):
     __tablename__ = 'notary_actions'
     id_action = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(300), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id_category'), nullable=False)
-    description = db.Column(db.String(1000))
+    description = db.Column(db.String(2000))
 
     def __str__(self):
         return self.name
@@ -63,7 +63,7 @@ class ArticleNorm(db.Model):
     __bind_key__ = 'tariffs'
     __tablename__ = 'article_norms'
     id_norm = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(200), nullable=False)
 
     def __str__(self):
         return self.name

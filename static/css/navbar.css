@@ -7,21 +7,22 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-            box-shadow: 5px 5px 10px rgba(22, 27, 29, 0.25), -5px -5px 10px rgba(250, 251, 255, 1);
-            background-color: #F2F2F2;
+             background-color: #7E162E;
             border-radius: 10px;
+
+
         }
 
         header nav li a {
             text-decoration: none;
-            color: #161B1D;
+            color: #ffffff;
             font-size: 1rem;
             font-weight: bold;
             transition: font-size 0.3s ease;
         }
 
         header nav li a:hover {
-            color: #7E162E;
+
             font-size: 20px;
         }
 
@@ -45,6 +46,7 @@
         @media (max-width: 670px) {
             .burger-menu {
                 display: flex;
+                position: fixed;
             }
 
             header nav ul {
@@ -66,17 +68,24 @@
             header nav ul.show {
                 right: 0;
                 display: flex;
+                max-height: 350px;
                 justify-content: space-evenly;
+                padding-top: 30px;
             }
 
             header nav ul li {
                 width: 100%;
                 text-align: left;
-                padding-left: 20px;
+                padding-left: 50px;
+
             }
 
             header nav li a {
                 display: block;
                 width: 100%;
+                color: black;
+
             }
+
+
         }

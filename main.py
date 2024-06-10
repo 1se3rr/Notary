@@ -1,7 +1,8 @@
-from config import app, db
-from models import *
+
 from views import *
 from admin import *
+
+#
 
 if __name__ == '__main__':
     with app.app_context():

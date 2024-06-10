@@ -6,7 +6,6 @@ from config import app, db
 from models import Category, NotaryAction, TariffType, TariffPrice, Title, Service, ArticleNorm
 from flask_login import current_user
 
-# Настройка админской панели с защитой
 class AdminMixin:
     def is_accessible(self):
         return current_user.is_authenticated and current_user.username == 'admin'
@@ -53,6 +52,8 @@ class ServiceView(MyModelView):
     form_columns = ['name', 'title_id', 'norm_id']
     column_labels = dict(name='Наименование', title_id='Название', norm_id='Норма')
 
+
+
 class MyAdminIndexView(AdminMixin, AdminIndexView):
     @expose('/')
     def index(self):
@@ -60,7 +61,6 @@ class MyAdminIndexView(AdminMixin, AdminIndexView):
 
 admin = Admin(app, name='Админ Панель', template_mode='bootstrap3', index_view=MyAdminIndexView(), url='/admin_panel')
 
-# Добавляем модели в Flask-Admin
 admin.add_view(MyModelView(Category, db.session, name='Категории'))
 admin.add_view(NotaryActionView(NotaryAction, db.session, name='Нотариальные Действия'))
 admin.add_view(MyModelView(TariffType, db.session, name='Типы Тарифов'))
