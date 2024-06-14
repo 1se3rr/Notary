@@ -14,8 +14,10 @@ nonce = uuid.uuid4().hex
 # Конфигурация базы данных
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notarial_acts.db'
 app.config['SQLALCHEMY_BINDS'] = {
-    'tariffs': 'sqlite:///tariffs.db'
+    'tariffs': 'sqlite:///tariffs.db',
+    'admin': 'sqlite:///admin_profile.db'
 }
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.urandom(24)
 
