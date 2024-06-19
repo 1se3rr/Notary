@@ -2,12 +2,13 @@ from config import db, login_manager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 class AdminUser(UserMixin, db.Model):
     __bind_key__ = 'admin'
     __tablename__ = 'admin_users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True, nullable=False)
-    password_hash = db.Column(db.String(150), nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)  # Увеличьте длину до 255 символов
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -15,16 +16,11 @@ class AdminUser(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return AdminUser.query.get(int(user_id))
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
 
 @login_manager.user_loader
 def load_user(user_id):
     return AdminUser.query.get(int(user_id))
+
 
 class Category(db.Model):
     __tablename__ = 'categories'
@@ -34,6 +30,7 @@ class Category(db.Model):
 
     def __str__(self):
         return self.name
+
 
 class NotaryAction(db.Model):
     __tablename__ = 'notary_actions'
@@ -45,6 +42,7 @@ class NotaryAction(db.Model):
     def __str__(self):
         return self.name
 
+
 class TariffType(db.Model):
     __bind_key__ = 'tariffs'
     __tablename__ = 'id_tariff_types'
@@ -54,6 +52,7 @@ class TariffType(db.Model):
 
     def __str__(self):
         return self.name
+
 
 class TariffPrice(db.Model):
     __bind_key__ = 'tariffs'
@@ -68,6 +67,7 @@ class TariffPrice(db.Model):
     def __str__(self):
         return f"{self.service.name} - {self.price}"
 
+
 class ArticleNorm(db.Model):
     __bind_key__ = 'tariffs'
     __tablename__ = 'article_norms'
@@ -76,6 +76,7 @@ class ArticleNorm(db.Model):
 
     def __str__(self):
         return self.name
+
 
 class Title(db.Model):
     __bind_key__ = 'tariffs'
@@ -86,6 +87,7 @@ class Title(db.Model):
 
     def __str__(self):
         return self.name
+
 
 class Service(db.Model):
     __bind_key__ = 'tariffs'

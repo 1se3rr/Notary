@@ -1,0 +1,58 @@
+{% extends 'admin/master.html' %}
+
+{% block head %}
+   <style>
+       .statistics-container {
+           background-color: #f8f9fa;
+           border-radius: 8px;
+           padding: 20px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+           max-width: 600px;
+           margin: 20px auto;
+       }
+
+       .statistics-header {
+           text-align: center;
+           font-size: 24px;
+           color: #343a40;
+           margin-bottom: 20px;
+       }
+
+       .statistics-list {
+           list-style: none;
+           padding: 0;
+       }
+
+       .statistics-list li {
+           display: flex;
+           justify-content: space-between;
+           padding: 10px 0;
+           border-bottom: 1px solid #dee2e6;
+           font-size: 18px;
+       }
+
+       .statistics-list li:last-child {
+           border-bottom: none;
+       }
+
+       .statistics-value {
+           font-weight: bold;
+           color: #007bff;
+       }
+   </style>
+{% endblock %}
+
+{% block body %}
+<div class="statistics-container">
+    <h2 class="statistics-header">Статистика</h2>
+    <ul class="statistics-list">
+        <li>Количество категорий: <span class="statistics-value">{{ category_count }}</span></li>
+        <li>Количество нотариальных действий: <span class="statistics-value">{{ notary_action_count }}</span></li>
+        <li>Количество типов тарифов: <span class="statistics-value">{{ tariff_type_count }}</span></li>
+        <li>Количество тарифов: <span class="statistics-value">{{ tariff_price_count }}</span></li>
+        <li>Количество заголовков: <span class="statistics-value">{{ title_count }}</span></li>
+        <li>Количество услуг: <span class="statistics-value">{{ service_count }}</span></li>
+        <li>Количество норм: <span class="statistics-value">{{ article_norm_count }}</span></li>
+    </ul>
+</div>
+{% endblock %}

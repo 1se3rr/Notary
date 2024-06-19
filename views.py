@@ -95,4 +95,9 @@ def FAQ():
 @app.route('/admin_panel')
 @login_required
 def admin_panel():
+
     return redirect(url_for('admin.index'))
+
+
+
+

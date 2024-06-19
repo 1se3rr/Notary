@@ -1,10 +1,12 @@
 from flask import redirect, url_for
-from flask_admin import Admin, AdminIndexView, expose
+from flask_admin import Admin, AdminIndexView, expose, BaseView
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.contrib.sqla.fields import QuerySelectField
+
+from flask_login import current_user, login_required, logout_user
+
 from config import app, db
 from models import Category, NotaryAction, TariffType, TariffPrice, Title, Service, ArticleNorm
-from flask_login import current_user
 
 
 class AdminMixin:
@@ -75,11 +77,38 @@ class ServiceView(MyModelView):
 class MyAdminIndexView(AdminMixin, AdminIndexView):
     @expose('/')
     def index(self):
-        return self.render('admin/index.html')
+        # Пример статистики
+        category_count = Category.query.count()
+        notary_action_count = NotaryAction.query.count()
+        tariff_type_count = TariffType.query.count()
+        tariff_price_count = TariffPrice.query.count()
+        title_count = Title.query.count()
+        service_count = Service.query.count()
+        article_norm_count = ArticleNorm.query.count()
+
+        # Передача данных в шаблон
+        return self.render('admin/index.html', category_count=category_count,
+                           notary_action_count=notary_action_count, tariff_type_count=tariff_type_count,
+                           tariff_price_count=tariff_price_count, title_count=title_count,
+                           service_count=service_count, article_norm_count=article_norm_count)
+
+
+class logout(BaseView):
+    @expose('/')
+    @login_required
+    def logout(self):
+        logout_user()
+        return redirect(url_for('login'))
+
+
+class DashBoard(AdminIndexView):
+    @expose('/')
+    def add_data_db(self):
+        return self.render('admin/index.html, ')
 
 
 admin = Admin(app, name='Админ Панель', template_mode='bootstrap3', index_view=MyAdminIndexView(), url='/admin_panel')
-
+admin.add_view(logout(name='Выход'))
 
 admin.add_view(MyModelView(Category, db.session, name='Категории'))
 admin.add_view(NotaryActionView(NotaryAction, db.session, name='Нотариальные Действия'))
