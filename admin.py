@@ -51,7 +51,7 @@ class NotaryActionView(MyModelView):
 
     def on_model_change(self, form, model, is_created):
         """Обрабатывает данные из формы и записывает валидные данные"""
-        model.category_id = form.data['category_id'].id_category
+        model.category_id = form.category_id.data.id_category
 
 
 class TariffPriceView(MyModelView):
@@ -60,8 +60,8 @@ class TariffPriceView(MyModelView):
 
     def on_model_change(self, form, model, is_created):
         """Обрабатывает данные из формы и записывает валидные данные"""
-        model.tariff_type_id = form.data['tariff_type_id'].id_tariff_types
-        model.id_service = form.data['service'].id_service
+        model.tariff_type_id = form.tariff_type_id.data.id_tariff_types
+        model.id_service = form.service.data.id_service
 
 
 class ServiceView(MyModelView):
@@ -70,8 +70,8 @@ class ServiceView(MyModelView):
 
     def on_model_change(self, form, model, is_created):
         """Обрабатывает данные из формы и записывает валидные данные"""
-        model.title_id = form.data['title_id'].id_title
-        model.norm_id = form.data['norm_id'].id_norm
+        model.title_id = form.title_id.data.id_title
+        model.norm_id = form.norm_id.data.id_norm
 
 
 class MyAdminIndexView(AdminMixin, AdminIndexView):
